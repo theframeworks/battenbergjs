@@ -1,0 +1,23 @@
+{
+  "name": "tfspark-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:dev": "http-serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://tfspark-mmiller@bitbucket.org/tfsparkadmin/internal-site.git"
+  },
+  "author": "Matt",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tfsparkadmin/internal-site#readme",
+  "dependencies": {
+    "marzipano": "^0.7.2"
+  },
+  "devDependencies": {
+    "http-serve": "^1.0.1"
+  }
+}

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve:dev": "http-serve"
+    "serve:dev": "http-serve",
+    "build": "browserify tour/index.js -o dist/tour.js",
+    "watch": "watchify tour/index.js -o dist/tour.js --debug --verbose"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,7 @@
+const assign = require('lodash.assign');
 const babel = require('gulp-babel');
+const browserify = require('browserify');
+const buffer = require('vinyl-buffer');
 const cheerio = require('gulp-cheerio');
 const clean = require('gulp-clean');
 const concat = require('gulp-concat');
@@ -9,24 +12,57 @@ const fs = require('fs');
 const gulp = require('gulp-param')(require('gulp'), process.argv);
 const htmlmin = require('gulp-htmlmin');
 const image = require('gulp-image');
+const log = require('gulplog');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sequence = require('gulp-sequence');
+const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
+const watchify = require('watchify');
 const zip = require('gulp-zip');
 
 // google key
 const gKey = 'AIzaSyDK79RuzuoAhl8h6ao6bZN1bU5zJAzD0oY';
+
+var browserifyOpts = {
+    entries: ['./src/**/*.js'],
+    debug: true
+};
+var opts = assign({}, watchify.args, browserifyOpts);
+var b = watchify(browserify(opts));
+
+
+function bundleJS() {
+    return b.bundle()
+        // log errors if they happen
+        .on('error', log.error.bind(log, 'Browserify Error'))
+        .pipe(source('bundle.js'))
+        // optional, remove if you don't need to buffer file contents
+        .pipe(buffer())
+        // optional, remove if you dont want sourcemaps
+        .pipe(sourcemaps.init({ loadMaps: true })) // loads map from browserify file
+        // Add transformation tasks to the pipeline here.
+        .pipe(sourcemaps.write('./')) // writes .map file
+        .pipe(gulp.dest('./src'));
+}
+
+gulp.task('bundlejs', bundleJS); // so you can run `gulp js` to build the file
+b.on('update', bundleJS); // on any dep update, runs the bundler
+b.on('log', log.info); // output build logs to terminal
+
+
+gulp.task('js', function () {
+    return gulp.src('../dist/js/*')
+        .pipe(uglify())
+        .pipe(gulp.dest('../dist/js'));
+});
 
 gulp.task('clean', function () {
     return gulp.src('../dist', { read: false })
         .pipe(clean({ force: true }));
 });
 
-gulp.task('scrape', function (url) {
-    return scrape({ urls: [url], directory: '../dist' });
-});
 
 gulp.task('css', function () {
     return gulp.src('../dist/css/*')
@@ -45,64 +81,6 @@ gulp.task('css', function () {
 gulp.task('html', function () {
     return gulp.src('../dist/*.html')
         .pipe(embed())
-        .pipe(cheerio(function ($) {
-            // remove webflow data attributes
-            // _ apparently removing 'data-wf-page' breaks the js
-            ['domain', '_page', 'site'].forEach(function (attr) {
-                $(`[data-wf-${attr}]`).removeAttr(`data-wf-${attr}`);
-            });
-            // remove webflow meta generator
-            $('head > meta[name="generator"]').remove();
-            // remove crossorigin="anonymous" attribute from scripts
-            $('script[crossorigin="anonymous"]').removeAttr('crossorigin');
-
-            /*
-             * IBM garage stuff  
-             */
-            $('head').append('<link href="css/ibm-garage-360.css" rel="stylesheet">')
-                .append($('<script>').text('var TFS = TFS || {}'))
-                .append($('<script>').text('TFS.map = function () { (new IBMMap()).init() }'))
-                .append('<script src="js/ibm-garage-map.js">')
-                .append(`<script src="https://maps.googleapis.com/maps/api/js?key=${gKey}&callback=TFS.map" async>`);
-
-            $('body').append('<script src="js/ibm-garage-360.js">');
-
-            var $opening = $([
-
-                '<svg width="10" height="10" class="opening">',
-                '<circle cx="50%" cy="50%" r="50%" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" class="opening__path">',
-                '</svg>'
-
-            ].join(''));
-
-            $('#pano').append($opening.clone().addClass('opening--left'))
-                .append($opening.clone().addClass('opening--right'));
-
-
-            // IBM shell integration
-
-            fs.writeFileSync('../dist/naked.html', $.html());
-
-            var $ibm = require('cheerio').load(fs.readFileSync('ibm-shell.html'));
-            // simulate some content height for the shell in order to debug it
-            var $height = $('<style>').text('#ibm-top { margin-bottom: 200vh }');
-            $ibm('head').append($height);
-            fs.writeFileSync('../dist/shell.html', $ibm.html());
-            $height.remove();
-
-            var $head = $('head').children('meta[name="viewport"], link[rel="stylesheet"], style, script');
-            var $body = $('body').children();
-
-            $ibm('html').attr('data-wf-page', $('html').attr('data-wf-page'));
-
-            $ibm('head').append($head).append('<link href="css/ibm-garage-shell.css" rel="stylesheet">');
-
-            $ibm('body').append('<script src="js/ibm-garage-shell.js">');
-
-            $ibm('#ibm-top').append($body);
-
-            $('html').replaceWith($ibm('html'));
-        }))
         .pipe(htmlmin({
             collapseWhitespace: true,
             removeAttributeQuotes: true,
@@ -124,11 +102,7 @@ gulp.task('images:svg', function () {
         .pipe(gulp.dest('../dist/fonts'));
 });
 
-gulp.task('js', function () {
-    return gulp.src('../dist/js/*')
-        .pipe(uglify())
-        .pipe(gulp.dest('../dist/js'));
-});
+
 
 gulp.task('zip', function () {
     return gulp.src(['../dist/**/*', '!../dist/dist.zip'])
@@ -136,26 +110,6 @@ gulp.task('zip', function () {
         .pipe(gulp.dest('../dist'));
 });
 
-gulp.task('map:images', function () {
-    return gulp.src('../ibm-garage-map/src/images/**/*')
-        // .pipe(image())
-        .pipe(gulp.dest('../dist/images'));
-});
-
-gulp.task('map:js', function () {
-    return gulp.src([
-        '../ibm-garage-map/src/markerclusterer.js',
-        '../ibm-garage-map/src/ibm_map.js',
-    ])
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(uglify())
-        .pipe(concat('ibm-garage-map.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('../dist/js'));
-});
 
 gulp.task('vr:css', function () {
     return gulp.src('../src/ibm-garage.scss')
@@ -207,46 +161,19 @@ gulp.task('vr:js', function () {
         .pipe(gulp.dest('../dist/js'));
 });
 
-gulp.task('shell:css', function () {
-    return gulp.src('ibm-garage-shell.scss')
-        .pipe(sass())
-        .pipe(cssnano({
-            discardComments: {
-                removeAll: true,
-            },
-            mergeLonghand: false,
-            zindex: false,
-        }))
-        .pipe(gulp.dest('../dist/css'));
-});
-
-gulp.task('shell:js', function () {
-    return gulp.src('ibm-garage-shell.js')
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env'],
-        }))
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('../dist/js'));
-});
-
 
 
 gulp.task('default', sequence(
-    'clean', 'scrape',
+    'clean',
     [
         'css', 'images:img', 'images:svg', 'js',
-        'shell:css', 'shell:js',
-        'map:images', 'map:js',
         'vr:css', 'vr:icons', 'vr:tiles', 'vr:js',
     ],
     'html', 'zip'
 ));
 
 gulp.task('watch', [
-    'shell:css', 'shell:js',
-    'map:images', 'map:js',
+    'css', 'images:img', 'images:svg', 'js',
     'vr:css', 'vr:icons', 'vr:tiles', 'vr:js',
 ], function () {
     gulp.watch(['*.scss'], ['shell:css']);

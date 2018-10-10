@@ -1,3 +1,5 @@
+const Marzipano = require('marzipano');
+
 class MarzipanoViewer {
 
     /**
@@ -12,7 +14,7 @@ class MarzipanoViewer {
         this.initialScene = 0;
         this.rotationMaps = this.sceneTransitionRotationMapping();
 
-        this.Marzipano = window.Marzipano;
+        this.Marzipano = Marzipano;
         this.screenfull = window.screenfull;
         this.sceneData = sceneData;
 

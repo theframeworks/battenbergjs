@@ -1,3 +1,4 @@
+const MarzipanoViewer = require('./MarzipanoViewer');
 
 class VRViewer extends MarzipanoViewer {
 
@@ -8,6 +9,7 @@ class VRViewer extends MarzipanoViewer {
         this.gyroEnabled;
         this.viewingTimeoutID = null;
         this.currentHotspotCandidate = null;
+
         this.openedHotspot = null;
         this.previousFrameRotation = { yaw: 0, pitch: 0, roll: 0 };
 

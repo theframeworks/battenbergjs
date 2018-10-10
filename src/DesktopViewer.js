@@ -1,3 +1,4 @@
+const MarzipanoViewer = require('./MarzipanoViewer');
 
 
 class DesktopViewer extends MarzipanoViewer {

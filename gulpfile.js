@@ -26,11 +26,7 @@ const zip = require('gulp-zip');
 const gKey = 'AIzaSyDK79RuzuoAhl8h6ao6bZN1bU5zJAzD0oY';
 
 const browserifyFiles = [
-    './src/DesktopViewer.js',
-    './src/VRViewer.js',
-    './src/MarzipanoViewer.js'
-
-
+    './src/index.js'
 ];
 
 var browserifyOpts = {

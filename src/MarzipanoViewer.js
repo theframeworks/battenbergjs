@@ -1,4 +1,5 @@
 const Marzipano = require('marzipano');
+import { tiledImageSource } from './utils';
 
 class MarzipanoViewer {
 
@@ -79,10 +80,7 @@ class MarzipanoViewer {
         return _data.map((mData, i) => {
 
             // [1] get the images
-            let urlPrefix = 'tiles/' + mData.id;
-            let source = this.Marzipano.ImageUrlSource.fromString(
-                urlPrefix + '/{z}/{f}/{y}/{x}.jpg',
-                { cubeMapPreviewUrl: urlPrefix + '/preview.jpg' });
+            const source = tiledImageSource(mData.id);
 
             // [2] Create the geometry
             let geometry = new this.Marzipano.CubeGeometry(this.sceneData.cubeGeometryLevels);

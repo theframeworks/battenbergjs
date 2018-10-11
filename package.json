@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "scripts": {
         "serve": "node_modules/http-server/bin/http-server ",
-        "dev": "scripts/dev"
+        "scrape": "scraper --url --output-dir",
+        "slice": "slice --file-dir --output-dir"
     },
     "repository": {
         "type": "git",

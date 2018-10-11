@@ -1,4 +1,5 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
+const DeviceOrientationStrategy = require('./DeviceOrientationStrategy');
 
 class VRViewer extends MarzipanoViewer {
 
@@ -23,7 +24,7 @@ class VRViewer extends MarzipanoViewer {
 
         this.orientationMethodID = 'deviceOrientation';
 
-        this.deviceOrientationControlFunction = window.DeviceOrientationControlMethod;
+        this.deviceOrientationControlFunction = DeviceOrientationStrategy;
         this.deviceOrientationController;
 
         const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);

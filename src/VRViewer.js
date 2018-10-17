@@ -1,11 +1,13 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
 const DeviceOrientationStrategy = require('./DeviceOrientationStrategy');
+const { deg2rad, clampOverflowRotation } = require('./utils');
+
 
 module.exports = class VRViewer extends MarzipanoViewer {
 
-  constructor(panoElement) {
+  constructor(panoElement, configData) {
 
-    super('mobileVR', panoElement, window.sceneDataVR);
+    super('mobileVR', panoElement, configData);
 
     this.gyroEnabled;
     this.viewingTimeoutID = null;
@@ -18,9 +20,9 @@ module.exports = class VRViewer extends MarzipanoViewer {
     this.sceneEntryViewDirection = null;
 
     this.lookTriggerThreshold = 1.5 * 1000;
-    this.openPopupRadianThreshhold = this.deg2rad(5);
+    this.openPopupRadianThreshhold = deg2rad(5);
     // This is the single column threshold, it gets doubled when exiting 2 column popups
-    this.closePopupHorizontalRadianThreshholdPerColumn = this.deg2rad(15);
+    this.closePopupHorizontalRadianThreshholdPerColumn = deg2rad(15);
 
     this.orientationMethodID = 'deviceOrientation';
 
@@ -220,24 +222,6 @@ module.exports = class VRViewer extends MarzipanoViewer {
   }
 
 
-  // 
-  /**
-   * Clamp a radian rotation between -Pi and Pi.
-   * 0 is looking directly at the spot.
-   * Negative results are moving left.
-   * Positive results are moving right.
-   * @param {Number} rotation 
-   */
-  clampOverflowRotation(rotation) {
-    const pi2 = (Math.PI * 2);
-    let radian = (rotation + Math.PI) % pi2;
-
-    if (radian < 0) radian += pi2;
-
-    return radian - Math.PI;
-  }
-
-
   minimumLookAtBounds(spot, params) {
 
     const yawDiff = spot.yaw - params.yaw;
@@ -252,7 +236,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
   minimumLookAwayBounds(spot, params) {
 
     // Gotta normalise the yaw diff a bit
-    const yawDiff = this.clampOverflowRotation(spot.yaw - params.yaw);
+    const yawDiff = clampOverflowRotation(spot.yaw - params.yaw);
 
     // > < is flipped from the {lookAt} bounds
     // we're trying to get FURTHER AWAY to close, not CLOSE ENOUGH to open

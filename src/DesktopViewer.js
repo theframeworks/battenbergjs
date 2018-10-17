@@ -1,10 +1,12 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
+const { tiledImageSource, isBelievedDesktop, rad2deg, findSceneById, findSceneDataById } = require('./utils');
+
 
 
 module.exports = class DesktopViewer extends MarzipanoViewer {
 
-  constructor(panoElement) {
-    super('desktop', panoElement, window.sceneDataDesktop);
+  constructor(panoElement, configData) {
+    super('desktop', panoElement, configData);
 
     this.autorotateData;
     this.firstLoad = true;
@@ -23,8 +25,8 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
     // [3] Create the "eyes" or view.
     let limiter = this.Marzipano.RectilinearView.limit.traditional(
       this.sceneData.faceSize,
-      this.deg2rad(100),
-      this.deg2rad(120));
+      deg2rad(100),
+      deg2rad(120));
     const view = new this.Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
     // The current scene does not change when creating a scene in this way.

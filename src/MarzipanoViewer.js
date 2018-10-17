@@ -1,5 +1,5 @@
 const Marzipano = require('marzipano');
-const { tiledImageSource } = require('./utils');
+const { tiledImageSource, isBelievedDesktop, rad2deg, deg2rad, findSceneById, findSceneDataById } = require('./utils');
 
 module.exports = class MarzipanoViewer {
 
@@ -23,7 +23,7 @@ module.exports = class MarzipanoViewer {
     this.mat4 = this.Marzipano.dependencies.glMatrix.mat4;
     this.quat = this.Marzipano.dependencies.glMatrix.quat;
 
-    this.believedDesktop = this.isBelievedDesktop(environment);
+    this.believedDesktop = isBelievedDesktop(environment);
 
     // Viewer options. Choices here: http://www.marzipano.net/reference/global.html#registerDefaultControls
     let viewerOpts = {
@@ -55,19 +55,6 @@ module.exports = class MarzipanoViewer {
     return this.scenes;
   }
 
-  // Do I need to make these 180s as floats?
-  // JS only has the Number type for all numbers though, probably not an issue.
-  deg2rad(deg) {
-    return deg * Math.PI / 180;
-  }
-
-  rad2deg(rad) {
-    return rad * 180 / Math.PI;
-  }
-
-  isBelievedDesktop() {
-    return this.environment !== 'mobileVR';
-  }
 
 
   /**
@@ -78,6 +65,7 @@ module.exports = class MarzipanoViewer {
   createScenesFromData(_data, createScene, viewer) {
 
     return _data.map((mData, i) => {
+
 
       // [1] get the images
       const source = tiledImageSource(mData.id);
@@ -113,11 +101,6 @@ module.exports = class MarzipanoViewer {
   }
 
 
-  sanitize(s) {
-    return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
-  }
-
-
   createLinkHotspotElement(hotspot, switchScene) {
 
     // Create wrapper element to hold icon and tooltip.
@@ -132,7 +115,7 @@ module.exports = class MarzipanoViewer {
 
     // Add click event handler.
     wrapper.addEventListener('click', () => {
-      this.currentScene = switchScene.call(this, this.findSceneById(hotspot.target));
+      this.currentScene = switchScene.call(this, findSceneById(hotspot.target));
     });
 
     // Prevent touch and scroll events from reaching the parent element.
@@ -243,24 +226,6 @@ module.exports = class MarzipanoViewer {
         event.stopPropagation();
       });
     }
-  }
-
-  findSceneById(id) {
-    for (let i = 0; i < this.scenes.length; i++) {
-      if (this.scenes[i].data.id === id) {
-        return this.scenes[i];
-      }
-    }
-    return null;
-  }
-
-  findSceneDataById(id) {
-    for (let i = 0; i < this.sceneData.scenes.length; i++) {
-      if (this.sceneData.scenes[i].id === id) {
-        return this.sceneData.scenes[i];
-      }
-    }
-    return null;
   }
 
   /**

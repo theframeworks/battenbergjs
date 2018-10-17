@@ -5,7 +5,7 @@ const Marzipano = require('marzipano');
  * @param {string} id 
  * @returns Marzipano.ImageUrlSource
  */
-let tiledImageSource = (id) => {
+function tiledImageSource(id) {
 
     const urlPrefix = 'tiles/' + id;
     const source = Marzipano.ImageUrlSource.fromString(
@@ -15,4 +15,4 @@ let tiledImageSource = (id) => {
     return source;
 }
 
-module.exports.tiledImageSource = tiledImageSource;
+module.export = tiledImageSource;

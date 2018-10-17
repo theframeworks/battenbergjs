@@ -1,5 +1,5 @@
 const Marzipano = require('marzipano');
-import { tiledImageSource } from './utils';
+const { tiledImageSource } = require('./utils');
 
 class MarzipanoViewer {
 

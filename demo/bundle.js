@@ -1,4 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const battenburg = require('../src/index');
+console.log(battenburg);
+},{"../src/index":123}],2:[function(require,module,exports){
 /*!
  * Bowser - a browser detector
  * https://github.com/ded/bowser
@@ -644,7 +647,7 @@
   return bowser
 });
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -682,7 +685,7 @@ exports.quat = require("./gl-matrix/quat.js");
 exports.vec2 = require("./gl-matrix/vec2.js");
 exports.vec3 = require("./gl-matrix/vec3.js");
 exports.vec4 = require("./gl-matrix/vec4.js");
-},{"./gl-matrix/common.js":3,"./gl-matrix/mat2.js":4,"./gl-matrix/mat2d.js":5,"./gl-matrix/mat3.js":6,"./gl-matrix/mat4.js":7,"./gl-matrix/quat.js":8,"./gl-matrix/vec2.js":9,"./gl-matrix/vec3.js":10,"./gl-matrix/vec4.js":11}],3:[function(require,module,exports){
+},{"./gl-matrix/common.js":4,"./gl-matrix/mat2.js":5,"./gl-matrix/mat2d.js":6,"./gl-matrix/mat3.js":7,"./gl-matrix/mat4.js":8,"./gl-matrix/quat.js":9,"./gl-matrix/vec2.js":10,"./gl-matrix/vec3.js":11,"./gl-matrix/vec4.js":12}],4:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -754,7 +757,7 @@ glMatrix.equals = function(a, b) {
 
 module.exports = glMatrix;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1192,7 +1195,7 @@ mat2.multiplyScalarAndAdd = function(out, a, b, scale) {
 
 module.exports = mat2;
 
-},{"./common.js":3}],5:[function(require,module,exports){
+},{"./common.js":4}],6:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1663,7 +1666,7 @@ mat2d.equals = function (a, b) {
 
 module.exports = mat2d;
 
-},{"./common.js":3}],6:[function(require,module,exports){
+},{"./common.js":4}],7:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -2411,7 +2414,7 @@ mat3.equals = function (a, b) {
 
 module.exports = mat3;
 
-},{"./common.js":3}],7:[function(require,module,exports){
+},{"./common.js":4}],8:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4577,7 +4580,7 @@ mat4.equals = function (a, b) {
 
 module.exports = mat4;
 
-},{"./common.js":3}],8:[function(require,module,exports){
+},{"./common.js":4}],9:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5179,7 +5182,7 @@ quat.equals = vec4.equals;
 
 module.exports = quat;
 
-},{"./common.js":3,"./mat3.js":6,"./vec3.js":10,"./vec4.js":11}],9:[function(require,module,exports){
+},{"./common.js":4,"./mat3.js":7,"./vec3.js":11,"./vec4.js":12}],10:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5768,7 +5771,7 @@ vec2.equals = function (a, b) {
 
 module.exports = vec2;
 
-},{"./common.js":3}],10:[function(require,module,exports){
+},{"./common.js":4}],11:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -6550,7 +6553,7 @@ vec3.equals = function (a, b) {
 
 module.exports = vec3;
 
-},{"./common.js":3}],11:[function(require,module,exports){
+},{"./common.js":4}],12:[function(require,module,exports){
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7161,7 +7164,7 @@ vec4.equals = function (a, b) {
 
 module.exports = vec4;
 
-},{"./common.js":3}],12:[function(require,module,exports){
+},{"./common.js":4}],13:[function(require,module,exports){
 /*! Hammer.JS - v2.0.4 - 2015-01-30
  * http://hammerjs.github.io/
  *
@@ -9674,7 +9677,7 @@ if (typeof define == TYPE_FUNCTION && define.amd) {
 
 })(window, document, 'Hammer');
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -9797,7 +9800,7 @@ GraphFinder.prototype.next = function() {
 
 module.exports = GraphFinder;
 
-},{"./collections/Set":32}],14:[function(require,module,exports){
+},{"./collections/Set":33}],15:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -10033,7 +10036,7 @@ Hotspot.prototype._setPosition = function(x, y) {
 
 module.exports = Hotspot;
 
-},{"./positionAbsolutely":57,"./support/Css":83,"./util/dom":100,"minimal-event-emitter":117}],15:[function(require,module,exports){
+},{"./positionAbsolutely":58,"./support/Css":84,"./util/dom":101,"minimal-event-emitter":118}],16:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -10350,7 +10353,7 @@ HotspotContainer.prototype._setPositionAndSizeWithoutRect = function() {
 
 module.exports = HotspotContainer;
 
-},{"./Hotspot":14,"./calcRect":28,"./positionAbsolutely":57,"./support/cssPointerEvents":86,"./util/dom":100,"minimal-event-emitter":117}],16:[function(require,module,exports){
+},{"./Hotspot":15,"./calcRect":29,"./positionAbsolutely":58,"./support/cssPointerEvents":87,"./util/dom":101,"minimal-event-emitter":118}],17:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -10614,7 +10617,7 @@ Layer.prototype.unpinFirstLevel = function() {
 
 module.exports = Layer;
 
-},{"./util/extend":101,"minimal-event-emitter":117}],17:[function(require,module,exports){
+},{"./util/extend":102,"minimal-event-emitter":118}],18:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -10645,7 +10648,7 @@ inherits(NetworkError, Error);
 
 module.exports = NetworkError;
 
-},{"./util/inherits":103}],18:[function(require,module,exports){
+},{"./util/inherits":104}],19:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -10792,7 +10795,7 @@ RenderLoop.prototype._loop = function() {
 
 module.exports = RenderLoop;
 
-},{"minimal-event-emitter":117}],19:[function(require,module,exports){
+},{"minimal-event-emitter":118}],20:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -11231,7 +11234,7 @@ Scene.prototype._updateHotspotContainer = function() {
 
 module.exports = Scene;
 
-},{"./HotspotContainer":15,"./Layer":16,"./TextureStore":20,"./util/clock":91,"./util/defaults":96,"./util/noop":106,"./util/type":114,"minimal-event-emitter":117}],20:[function(require,module,exports){
+},{"./HotspotContainer":16,"./Layer":17,"./TextureStore":21,"./util/clock":92,"./util/defaults":97,"./util/noop":107,"./util/type":115,"minimal-event-emitter":118}],21:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -11900,7 +11903,7 @@ TextureStore.prototype.query = function(tile) {
 
 module.exports = TextureStore;
 
-},{"./collections/LruSet":30,"./collections/Map":31,"./collections/Set":32,"./util/chain":89,"./util/defaults":96,"./util/inherits":103,"./util/retry":111,"minimal-event-emitter":117}],21:[function(require,module,exports){
+},{"./collections/LruSet":31,"./collections/Map":32,"./collections/Set":33,"./util/chain":90,"./util/defaults":97,"./util/inherits":104,"./util/retry":112,"minimal-event-emitter":118}],22:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -12047,7 +12050,7 @@ Timer.prototype.setDuration = function(duration) {
 
 module.exports = Timer;
 
-},{"./util/clock":91,"./util/defaults":96,"minimal-event-emitter":117}],22:[function(require,module,exports){
+},{"./util/clock":92,"./util/defaults":97,"minimal-event-emitter":118}],23:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -12861,7 +12864,7 @@ Viewer.prototype.switchScene = function(newScene, opts, done) {
 
 module.exports = Viewer;
 
-},{"./Layer":16,"./RenderLoop":18,"./Scene":19,"./TextureStore":20,"./Timer":21,"./controls/ControlCursor":37,"./controls/Controls":38,"./controls/HammerGestures":42,"./controls/registerDefaultControls":49,"./renderers/registerDefaultRenderers":69,"./stages/Css":76,"./stages/Flash":77,"./stages/WebGl":80,"./util/dom":100,"./util/noop":106,"./util/tween":113,"./util/type":114,"bowser":1,"minimal-event-emitter":117}],23:[function(require,module,exports){
+},{"./Layer":17,"./RenderLoop":19,"./Scene":20,"./TextureStore":21,"./Timer":22,"./controls/ControlCursor":38,"./controls/Controls":39,"./controls/HammerGestures":43,"./controls/registerDefaultControls":50,"./renderers/registerDefaultRenderers":70,"./stages/Css":77,"./stages/Flash":78,"./stages/WebGl":81,"./util/dom":101,"./util/noop":107,"./util/tween":114,"./util/type":115,"bowser":2,"minimal-event-emitter":118}],24:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -12937,7 +12940,7 @@ DynamicCanvasAsset.prototype.destroy = function() {
 };
 
 module.exports = DynamicCanvasAsset;
-},{"minimal-event-emitter":117}],24:[function(require,module,exports){
+},{"minimal-event-emitter":118}],25:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -12988,7 +12991,7 @@ FlashImageAsset.prototype.destroy = function() {
 };
 
 module.exports = FlashImageAsset;
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13042,7 +13045,7 @@ StaticCanvasAsset.prototype.dynamic = false;
 StaticCanvasAsset.prototype.destroy = noop;
 
 module.exports = StaticCanvasAsset;
-},{"../util/noop":106}],26:[function(require,module,exports){
+},{"../util/noop":107}],27:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13098,7 +13101,7 @@ StaticImageAsset.prototype.destroy = noop;
 
 module.exports = StaticImageAsset;
 
-},{"../util/noop":106}],27:[function(require,module,exports){
+},{"../util/noop":107}],28:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13232,7 +13235,7 @@ function autorotate(opts) {
 }
 
 module.exports = autorotate;
-},{"./util/defaults":96}],28:[function(require,module,exports){
+},{"./util/defaults":97}],29:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13305,7 +13308,7 @@ function calcRect(totalWidth, totalHeight, spec, result) {
 }
 
 module.exports = calcRect;
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13488,7 +13491,7 @@ LruMap.prototype.each = function(fn) {
 
 module.exports = LruMap;
 
-},{"../util/mod":105}],30:[function(require,module,exports){
+},{"../util/mod":106}],31:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13650,7 +13653,7 @@ LruSet.prototype.each = function(fn) {
 
 module.exports = LruSet;
 
-},{"../util/mod":105}],31:[function(require,module,exports){
+},{"../util/mod":106}],32:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13827,7 +13830,7 @@ Map.prototype.each = function(fn) {
 
 module.exports = Map;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -13974,7 +13977,7 @@ Set.prototype.each = function(fn) {
 
 module.exports = Set;
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -14048,7 +14051,7 @@ WorkPool.prototype.resume = function() {
 
 module.exports = WorkPool;
 
-},{"../util/mod":105,"./WorkQueue":34}],34:[function(require,module,exports){
+},{"../util/mod":106,"./WorkQueue":35}],35:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -14224,7 +14227,7 @@ WorkQueue.prototype._next = function() {
 
 module.exports = WorkQueue;
 
-},{"../util/clock":91}],35:[function(require,module,exports){
+},{"../util/clock":92}],36:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -14335,7 +14338,7 @@ module.exports = {
   applyToImageData: applyToImageData
 };
 
-},{"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec4":11}],36:[function(require,module,exports){
+},{"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec4":12}],37:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -14524,7 +14527,7 @@ ControlComposer.prototype.destroy = function() {
 
 
 module.exports = ControlComposer;
-},{"../util/clock":91,"./Dynamics":40,"minimal-event-emitter":117}],37:[function(require,module,exports){
+},{"../util/clock":92,"./Dynamics":41,"minimal-event-emitter":118}],38:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -14659,7 +14662,7 @@ ControlCursor.prototype._setCursor = function(cursor) {
 
 module.exports = ControlCursor;
 
-},{"../util/defaults":96}],38:[function(require,module,exports){
+},{"../util/defaults":97}],39:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15079,7 +15082,7 @@ Controls.prototype.destroy = function() {
 
 module.exports = Controls;
 
-},{"./Composer":36,"minimal-event-emitter":117}],39:[function(require,module,exports){
+},{"./Composer":37,"minimal-event-emitter":118}],40:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15273,7 +15276,7 @@ DragControlMethod.prototype._updateDynamicsRelease = function(e) {
 
 
 module.exports = DragControlMethod;
-},{"../util/defaults":96,"./Dynamics":40,"./HammerGestures":42,"./util":50,"minimal-event-emitter":117}],40:[function(require,module,exports){
+},{"../util/defaults":97,"./Dynamics":41,"./HammerGestures":43,"./util":51,"minimal-event-emitter":118}],41:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15380,7 +15383,7 @@ function decreaseAbs(num, dec) {
 }
 
 module.exports = Dynamics;
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15481,7 +15484,7 @@ ElementPressControlMethod.prototype._handleRelease = function() {
 };
 
 module.exports = ElementPressControlMethod;
-},{"./Dynamics":40,"minimal-event-emitter":117}],42:[function(require,module,exports){
+},{"./Dynamics":41,"minimal-event-emitter":118}],43:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15623,7 +15626,7 @@ HammerGesturesHandle.prototype.manager = function() {
 
 
 module.exports = new HammerGestures();
-},{"../collections/Map":31,"../util/hash":102,"bowser":1,"hammerjs":12}],43:[function(require,module,exports){
+},{"../collections/Map":32,"../util/hash":103,"bowser":2,"hammerjs":13}],44:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15734,7 +15737,7 @@ KeyControlMethod.prototype._handleBlur = function() {
 };
 
 module.exports = KeyControlMethod;
-},{"./Dynamics":40,"minimal-event-emitter":117}],44:[function(require,module,exports){
+},{"./Dynamics":41,"minimal-event-emitter":118}],45:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15829,7 +15832,7 @@ PinchZoomControlMethod.prototype._handleEvent = function(e) {
 
 
 module.exports = PinchZoomControlMethod;
-},{"./Dynamics":40,"./HammerGestures":42,"minimal-event-emitter":117}],45:[function(require,module,exports){
+},{"./Dynamics":41,"./HammerGestures":43,"minimal-event-emitter":118}],46:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -15971,7 +15974,7 @@ QtvrControlMethod.prototype._updateDynamics = function(e, release) {
 
 
 module.exports = QtvrControlMethod;
-},{"../util/defaults":96,"./Dynamics":40,"./HammerGestures":42,"./util":50,"minimal-event-emitter":117}],46:[function(require,module,exports){
+},{"../util/defaults":97,"./Dynamics":41,"./HammerGestures":43,"./util":51,"minimal-event-emitter":118}],47:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -16083,7 +16086,7 @@ function wheelEventDelta(e) {
 
 
 module.exports = ScrollZoomControlMethod;
-},{"../util/defaults":96,"./Dynamics":40,"./WheelListener":48,"minimal-event-emitter":117}],47:[function(require,module,exports){
+},{"../util/defaults":97,"./Dynamics":41,"./WheelListener":49,"minimal-event-emitter":118}],48:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -16150,7 +16153,7 @@ VelocityControlMethod.prototype.setFriction = function(friction) {
 };
 
 module.exports = VelocityControlMethod;
-},{"../util/defaults":96,"./Dynamics":40,"minimal-event-emitter":117}],48:[function(require,module,exports){
+},{"../util/defaults":97,"./Dynamics":41,"minimal-event-emitter":118}],49:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -16245,7 +16248,7 @@ function fallbackHandler(callback) {
 }
 
 module.exports = WheelListener;
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -16357,7 +16360,7 @@ function registerDefaultControls(controls, element, opts) {
 }
 
 module.exports = registerDefaultControls;
-},{"../util/defaults":96,"./Drag":39,"./Key":43,"./PinchZoom":44,"./Qtvr":45,"./ScrollZoom":46}],50:[function(require,module,exports){
+},{"../util/defaults":97,"./Drag":40,"./Key":44,"./PinchZoom":45,"./Qtvr":46,"./ScrollZoom":47}],51:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -16393,7 +16396,7 @@ module.exports = {
   maxFriction: maxFriction,
   changeVectorNorm: changeVectorNorm
 };
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -17080,7 +17083,7 @@ CubeTile.type = CubeTile.prototype.type = 'cube';
 
 module.exports = CubeGeometry;
 
-},{"../GraphFinder":13,"../collections/LruMap":29,"../util/clamp":90,"../util/cmp":92,"../util/hash":102,"../util/inherits":103,"../util/rotateVector":112,"../util/type":114,"./Level":54,"./common":55,"gl-matrix/src/gl-matrix/vec3":10}],52:[function(require,module,exports){
+},{"../GraphFinder":14,"../collections/LruMap":30,"../util/clamp":91,"../util/cmp":93,"../util/hash":103,"../util/inherits":104,"../util/rotateVector":113,"../util/type":115,"./Level":55,"./common":56,"gl-matrix/src/gl-matrix/vec3":11}],53:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -17361,7 +17364,7 @@ EquirectTile.type = EquirectTile.prototype.type = 'equirect';
 
 module.exports = EquirectGeometry;
 
-},{"../util/cmp":92,"../util/hash":102,"../util/inherits":103,"../util/type":114,"./Level":54,"./common":55}],53:[function(require,module,exports){
+},{"../util/cmp":93,"../util/hash":103,"../util/inherits":104,"../util/type":115,"./Level":55,"./common":56}],54:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -17912,7 +17915,7 @@ FlatTile.type = FlatTile.prototype.type = 'flat';
 
 module.exports = FlatGeometry;
 
-},{"../GraphFinder":13,"../collections/LruMap":29,"../util/clamp":90,"../util/cmp":92,"../util/hash":102,"../util/inherits":103,"../util/mod":105,"../util/type":114,"./Level":54,"./common":55,"gl-matrix/src/gl-matrix/vec2":9}],54:[function(require,module,exports){
+},{"../GraphFinder":14,"../collections/LruMap":30,"../util/clamp":91,"../util/cmp":93,"../util/hash":103,"../util/inherits":104,"../util/mod":106,"../util/type":115,"./Level":55,"./common":56,"gl-matrix/src/gl-matrix/vec2":10}],55:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -17947,7 +17950,7 @@ Level.prototype.fallbackOnly = function() {
 };
 
 module.exports = Level;
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18002,7 +18005,7 @@ module.exports = {
   makeSelectableLevelList: makeSelectableLevelList
 };
 
-},{"../util/cmp":92}],56:[function(require,module,exports){
+},{"../util/cmp":93}],57:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18126,7 +18129,7 @@ module.exports = {
   }
 };
 
-},{"./Hotspot":14,"./HotspotContainer":15,"./Layer":16,"./RenderLoop":18,"./Scene":19,"./TextureStore":20,"./Viewer":22,"./assets/DynamicCanvas":23,"./assets/StaticCanvas":25,"./autorotate":27,"./colorEffects":35,"./controls/Controls":38,"./controls/Drag":39,"./controls/Dynamics":40,"./controls/ElementPress":41,"./controls/Key":43,"./controls/PinchZoom":44,"./controls/Qtvr":45,"./controls/ScrollZoom":46,"./controls/Velocity":47,"./controls/registerDefaultControls":49,"./geometries/Cube":51,"./geometries/Equirect":52,"./geometries/Flat":53,"./renderers/CssCube":59,"./renderers/CssFlat":60,"./renderers/FlashCube":62,"./renderers/FlashFlat":63,"./renderers/WebGlCube":66,"./renderers/WebGlEquirect":67,"./renderers/WebGlFlat":68,"./renderers/registerDefaultRenderers":69,"./sources/ImageUrl":74,"./sources/SingleAsset":75,"./stages/Css":76,"./stages/Flash":77,"./stages/WebGl":80,"./util/async":87,"./util/cancelize":88,"./util/chain":89,"./util/clamp":90,"./util/clock":91,"./util/cmp":92,"./util/compose":93,"./util/convertFov":94,"./util/decimal":95,"./util/defaults":96,"./util/defer":97,"./util/degToRad":98,"./util/delay":99,"./util/dom":100,"./util/extend":101,"./util/hash":102,"./util/inherits":103,"./util/mod":105,"./util/noop":106,"./util/once":107,"./util/pixelRatio":108,"./util/radToDeg":109,"./util/real":110,"./util/retry":111,"./util/tween":113,"./util/type":114,"./views/Flat":115,"./views/Rectilinear":116,"bowser":1,"gl-matrix":2,"hammerjs":12,"minimal-event-emitter":117}],57:[function(require,module,exports){
+},{"./Hotspot":15,"./HotspotContainer":16,"./Layer":17,"./RenderLoop":19,"./Scene":20,"./TextureStore":21,"./Viewer":23,"./assets/DynamicCanvas":24,"./assets/StaticCanvas":26,"./autorotate":28,"./colorEffects":36,"./controls/Controls":39,"./controls/Drag":40,"./controls/Dynamics":41,"./controls/ElementPress":42,"./controls/Key":44,"./controls/PinchZoom":45,"./controls/Qtvr":46,"./controls/ScrollZoom":47,"./controls/Velocity":48,"./controls/registerDefaultControls":50,"./geometries/Cube":52,"./geometries/Equirect":53,"./geometries/Flat":54,"./renderers/CssCube":60,"./renderers/CssFlat":61,"./renderers/FlashCube":63,"./renderers/FlashFlat":64,"./renderers/WebGlCube":67,"./renderers/WebGlEquirect":68,"./renderers/WebGlFlat":69,"./renderers/registerDefaultRenderers":70,"./sources/ImageUrl":75,"./sources/SingleAsset":76,"./stages/Css":77,"./stages/Flash":78,"./stages/WebGl":81,"./util/async":88,"./util/cancelize":89,"./util/chain":90,"./util/clamp":91,"./util/clock":92,"./util/cmp":93,"./util/compose":94,"./util/convertFov":95,"./util/decimal":96,"./util/defaults":97,"./util/defer":98,"./util/degToRad":99,"./util/delay":100,"./util/dom":101,"./util/extend":102,"./util/hash":103,"./util/inherits":104,"./util/mod":106,"./util/noop":107,"./util/once":108,"./util/pixelRatio":109,"./util/radToDeg":110,"./util/real":111,"./util/retry":112,"./util/tween":114,"./util/type":115,"./views/Flat":116,"./views/Rectilinear":117,"bowser":2,"gl-matrix":3,"hammerjs":13,"minimal-event-emitter":118}],58:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18167,7 +18170,7 @@ function positionAbsolutely(element, x, y) {
 
 module.exports = positionAbsolutely;
 
-},{"./support/Css":83,"./util/decimal":95,"./util/dom":100}],58:[function(require,module,exports){
+},{"./support/Css":84,"./util/decimal":96,"./util/dom":101}],59:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18372,7 +18375,7 @@ CssBaseRenderer.prototype.endLayer = function(layer) {
 
 module.exports = CssBaseRenderer;
 
-},{"../collections/Map":31,"../util/dom":100}],59:[function(require,module,exports){
+},{"../collections/Map":32,"../util/dom":101}],60:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18474,7 +18477,7 @@ CssCubeRenderer.prototype.calculateTransform = function(tile, texture, view) {
 
 module.exports = CssCubeRenderer;
 
-},{"../geometries/Cube":51,"../util/decimal":95,"../util/inherits":103,"./CssBase":58}],60:[function(require,module,exports){
+},{"../geometries/Cube":52,"../util/decimal":96,"../util/inherits":104,"./CssBase":59}],61:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18557,7 +18560,7 @@ CssFlatRenderer.prototype.calculateTransform = function(tile, texture, view) {
 
 module.exports = CssFlatRenderer;
 
-},{"../geometries/Flat":53,"../util/decimal":95,"../util/inherits":103,"./CssBase":58}],61:[function(require,module,exports){
+},{"../geometries/Flat":54,"../util/decimal":96,"../util/inherits":104,"./CssBase":59}],62:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18644,7 +18647,7 @@ FlashBaseRenderer.prototype.endLayer = function(layer, rect) {
 
 module.exports = FlashBaseRenderer;
 
-},{"../collections/Map":31}],62:[function(require,module,exports){
+},{"../collections/Map":32}],63:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18746,7 +18749,7 @@ FlashCubeRenderer.prototype._renderOnFlash = function(layer, rect) {
 
 module.exports = FlashCubeRenderer;
 
-},{"../geometries/Cube":51,"../util/inherits":103,"../util/radToDeg":109,"./FlashBase":61}],63:[function(require,module,exports){
+},{"../geometries/Cube":52,"../util/inherits":104,"../util/radToDeg":110,"./FlashBase":62}],64:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -18846,7 +18849,7 @@ FlashFlatRenderer.prototype._renderOnFlash = function(layer, rect) {
 
 module.exports = FlashFlatRenderer;
 
-},{"../geometries/Flat":53,"../util/inherits":103,"./FlashBase":61}],64:[function(require,module,exports){
+},{"../geometries/Flat":54,"../util/inherits":104,"./FlashBase":62}],65:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19003,7 +19006,7 @@ WebGlBaseRenderer.prototype.renderTile = function(tile, texture, layer, layerZ) 
 
 module.exports = WebGlBaseRenderer;
 
-},{"../shaders/fragmentNormal":71,"../shaders/vertexNormal":73,"./WebGlCommon":65,"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec3":10}],65:[function(require,module,exports){
+},{"../shaders/fragmentNormal":72,"../shaders/vertexNormal":74,"./WebGlCommon":66,"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec3":11}],66:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19281,7 +19284,7 @@ module.exports = {
   setupPixelEffectUniforms: setupPixelEffectUniforms
 };
 
-},{"../util/clamp":90,"../util/pixelRatio":108,"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec3":10,"gl-matrix/src/gl-matrix/vec4":11}],66:[function(require,module,exports){
+},{"../util/clamp":91,"../util/pixelRatio":109,"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec3":11,"gl-matrix/src/gl-matrix/vec4":12}],67:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19316,7 +19319,7 @@ inherits(WebGlCubeRenderer, WebGlBaseRenderer);
 
 module.exports = WebGlCubeRenderer;
 
-},{"../util/inherits":103,"./WebGlBase":64}],67:[function(require,module,exports){
+},{"../util/inherits":104,"./WebGlBase":65}],68:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19466,7 +19469,7 @@ WebGlEquirectRenderer.prototype.renderTile = function(tile, texture, layer, laye
 
 module.exports = WebGlEquirectRenderer;
 
-},{"../shaders/fragmentEquirect":70,"../shaders/vertexEquirect":72,"./WebGlCommon":65,"gl-matrix/src/gl-matrix/mat4":7}],68:[function(require,module,exports){
+},{"../shaders/fragmentEquirect":71,"../shaders/vertexEquirect":73,"./WebGlCommon":66,"gl-matrix/src/gl-matrix/mat4":8}],69:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19501,7 +19504,7 @@ inherits(WebGlFlatRenderer, WebGlBaseRenderer);
 
 module.exports = WebGlFlatRenderer;
 
-},{"../util/inherits":103,"./WebGlBase":64}],69:[function(require,module,exports){
+},{"../util/inherits":104,"./WebGlBase":65}],70:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19559,7 +19562,7 @@ function registerDefaultRenderers(stage) {
 
 module.exports = registerDefaultRenderers;
 
-},{"./CssCube":59,"./CssFlat":60,"./FlashCube":62,"./FlashFlat":63,"./WebGlCube":66,"./WebGlEquirect":67,"./WebGlFlat":68}],70:[function(require,module,exports){
+},{"./CssCube":60,"./CssFlat":61,"./FlashCube":63,"./FlashFlat":64,"./WebGlCube":67,"./WebGlEquirect":68,"./WebGlFlat":69}],71:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19612,7 +19615,7 @@ module.exports = [
 '}'
 ].join('\n');
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19650,7 +19653,7 @@ module.exports = [
 '}'
 ].join('\n');
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19683,7 +19686,7 @@ module.exports = [
 '}'
 ].join('\n');
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19718,7 +19721,7 @@ module.exports = [
 '}'
 ].join('\n');
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19927,7 +19930,7 @@ eventEmitter(ImageUrlSource);
 
 module.exports = ImageUrlSource;
 
-},{"../NetworkError":17,"../collections/WorkPool":33,"../util/chain":89,"../util/clock":91,"../util/delay":99,"minimal-event-emitter":117}],75:[function(require,module,exports){
+},{"../NetworkError":18,"../collections/WorkPool":34,"../util/chain":90,"../util/clock":92,"../util/delay":100,"minimal-event-emitter":118}],76:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -19975,7 +19978,7 @@ SingleAssetSource.prototype.loadAsset = function(stage, tile, done) {
 };
 
 module.exports = SingleAssetSource;
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -20186,7 +20189,7 @@ CssStage.TextureClass = CssStage.prototype.TextureClass = CssTexture;
 
 module.exports = CssStage;
 
-},{"../support/Css":83,"../util/dom":100,"../util/inherits":103,"./Stage":79,"./loadImageHtml":82,"bowser":1}],77:[function(require,module,exports){
+},{"../support/Css":84,"../util/dom":101,"../util/inherits":104,"./Stage":80,"./loadImageHtml":83,"bowser":2}],78:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -20544,7 +20547,7 @@ FlashStage.TextureClass = FlashStage.prototype.TextureClass = FlashTexture;
 
 module.exports = FlashStage;
 
-},{"../collections/WorkQueue":34,"../support/Flash":84,"../util/defer":97,"../util/dom":100,"../util/inherits":103,"./Stage":79,"./loadImageFlash":81}],78:[function(require,module,exports){
+},{"../collections/WorkQueue":35,"../support/Flash":85,"../util/defer":98,"../util/dom":101,"../util/inherits":104,"./Stage":80,"./loadImageFlash":82}],79:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -20604,7 +20607,7 @@ RendererRegistry.prototype.get = function(geometryType, viewType) {
 
 module.exports = RendererRegistry;
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21179,7 +21182,7 @@ Stage.prototype.createTexture = function(tile, asset, done) {
 
 module.exports = Stage;
 
-},{"../calcRect":28,"../collections/WorkQueue":34,"../util/async":87,"../util/cancelize":88,"./RendererRegistry":78,"minimal-event-emitter":117}],80:[function(require,module,exports){
+},{"../calcRect":29,"../collections/WorkQueue":35,"../util/async":88,"../util/cancelize":89,"./RendererRegistry":79,"minimal-event-emitter":118}],81:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21584,7 +21587,7 @@ WebGlStage.TextureClass = WebGlStage.prototype.TextureClass = WebGlTexture;
 
 module.exports = WebGlStage;
 
-},{"../collections/Map":31,"../support/WebGl":85,"../util/defer":97,"../util/dom":100,"../util/hash":102,"../util/inherits":103,"../util/ispot":104,"../util/pixelRatio":108,"./Stage":79,"./loadImageHtml":82,"bowser":1}],81:[function(require,module,exports){
+},{"../collections/Map":32,"../support/WebGl":86,"../util/defer":98,"../util/dom":101,"../util/hash":103,"../util/inherits":104,"../util/ispot":105,"../util/pixelRatio":109,"./Stage":80,"./loadImageHtml":83,"bowser":2}],82:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21653,7 +21656,7 @@ function loadImageFlash(stage, url, rect, done) {
 }
 
 module.exports = loadImageFlash;
-},{"../NetworkError":17,"../assets/FlashImage":24,"../util/once":107}],82:[function(require,module,exports){
+},{"../NetworkError":18,"../assets/FlashImage":25,"../util/once":108}],83:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21749,7 +21752,7 @@ function loadImageHtml(url, rect, done) {
 
 module.exports = loadImageHtml;
 
-},{"../NetworkError":17,"../assets/StaticCanvas":25,"../assets/StaticImage":26,"../util/once":107}],83:[function(require,module,exports){
+},{"../NetworkError":18,"../assets/StaticCanvas":26,"../assets/StaticImage":27,"../util/once":108}],84:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21808,7 +21811,7 @@ function cssSupported() {
 
 module.exports = cssSupported;
 
-},{"../util/dom":100}],84:[function(require,module,exports){
+},{"../util/dom":101}],85:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21878,7 +21881,7 @@ function flashSupported() {
 
 module.exports = flashSupported;
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21916,7 +21919,7 @@ function webGlSupported() {
 
 module.exports = webGlSupported;
 
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21961,7 +21964,7 @@ function cssPointerEventsSupported() {
 
 module.exports = cssPointerEventsSupported;
 
-},{"bowser":1}],87:[function(require,module,exports){
+},{"bowser":2}],88:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -21994,7 +21997,7 @@ function async(fn) {
 }
 
 module.exports = async;
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22049,7 +22052,7 @@ function cancelize(fn) {
 
 module.exports = cancelize;
 
-},{"./once":107}],89:[function(require,module,exports){
+},{"./once":108}],90:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22168,7 +22171,7 @@ function chain() {
 
 module.exports = chain;
 
-},{"./noop":106}],90:[function(require,module,exports){
+},{"./noop":107}],91:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22191,7 +22194,7 @@ function clamp(value, min, max) {
 }
 
 module.exports = clamp;
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22227,7 +22230,7 @@ function getDateClock() {
 var clock = getPerformanceClock() || getDateClock();
 
 module.exports = clock;
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22256,7 +22259,7 @@ function cmp(x, y) {
 }
 
 module.exports = cmp;
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22296,7 +22299,7 @@ function compose() {
 }
 
 module.exports = compose;
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22409,7 +22412,7 @@ module.exports = {
   dtov: dtov
 };
 
-},{}],95:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22434,7 +22437,7 @@ function decimal(x) {
 }
 
 module.exports = decimal;
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22462,7 +22465,7 @@ function defaults(obj, defaultsObj) {
 }
 
 module.exports = defaults;
-},{}],97:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22492,7 +22495,7 @@ function defer(fn, args) {
 }
 
 module.exports = defer;
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22520,7 +22523,7 @@ function degToRad(deg) {
 }
 
 module.exports = degToRad;
-},{}],99:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22569,7 +22572,7 @@ function delay(ms, done) {
 
 module.exports = delay;
 
-},{}],100:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22707,7 +22710,7 @@ module.exports = {
   setBlocking: setBlocking
 };
 
-},{}],101:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22733,7 +22736,7 @@ function extend(obj, sourceObj) {
 }
 
 module.exports = extend;
-},{}],102:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22771,7 +22774,7 @@ function hash() {
 }
 
 module.exports = hash;
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22800,7 +22803,7 @@ function inherits(ctor, superCtor) {
 }
 
 module.exports = inherits;
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22824,7 +22827,7 @@ function ispot(n) {
 }
 
 module.exports = ispot;
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22855,7 +22858,7 @@ function mod(a, b) {
 }
 
 module.exports = mod;
-},{}],106:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22876,7 +22879,7 @@ module.exports = mod;
 function noop() {}
 
 module.exports = noop;
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22907,7 +22910,7 @@ function once(fn) {
 }
 
 module.exports = once;
-},{}],108:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22946,7 +22949,7 @@ function pixelRatio() {
 
 module.exports = pixelRatio;
 
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22974,7 +22977,7 @@ function radToDeg(rad) {
 }
 
 module.exports = radToDeg;
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -22997,7 +23000,7 @@ function real(x) {
 }
 
 module.exports = real;
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -23052,7 +23055,7 @@ function retry(fn) {
 
 module.exports = retry;
 
-},{"./noop":106}],112:[function(require,module,exports){
+},{"./noop":107}],113:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -23103,7 +23106,7 @@ function rotateVector(out, vec, y, x, z) {
 
 module.exports = rotateVector;
 
-},{"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec3":10}],113:[function(require,module,exports){
+},{"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec3":11}],114:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -23151,7 +23154,7 @@ function tween(duration, update, done) {
 }
 
 module.exports = tween;
-},{"./clock":91}],114:[function(require,module,exports){
+},{"./clock":92}],115:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -23187,7 +23190,7 @@ function type(x) {
 
 module.exports = type;
 
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -24054,7 +24057,7 @@ FlatView.type = FlatView.prototype.type = 'flat';
 
 module.exports = FlatView;
 
-},{"../util/clamp":90,"../util/pixelRatio":108,"../util/real":110,"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec4":11,"minimal-event-emitter":117}],116:[function(require,module,exports){
+},{"../util/clamp":91,"../util/pixelRatio":109,"../util/real":111,"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec4":12,"minimal-event-emitter":118}],117:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -25039,7 +25042,7 @@ RectilinearView.type = RectilinearView.prototype.type = 'rectilinear';
 
 module.exports = RectilinearView;
 
-},{"../util/clamp":90,"../util/compose":93,"../util/convertFov":94,"../util/decimal":95,"../util/mod":105,"../util/pixelRatio":108,"../util/real":110,"../util/rotateVector":112,"gl-matrix/src/gl-matrix/mat4":7,"gl-matrix/src/gl-matrix/vec4":11,"minimal-event-emitter":117}],117:[function(require,module,exports){
+},{"../util/clamp":91,"../util/compose":94,"../util/convertFov":95,"../util/decimal":96,"../util/mod":106,"../util/pixelRatio":109,"../util/real":111,"../util/rotateVector":113,"gl-matrix/src/gl-matrix/mat4":8,"gl-matrix/src/gl-matrix/vec4":12,"minimal-event-emitter":118}],118:[function(require,module,exports){
 'use strict';
 
 /**
@@ -25101,80 +25104,80 @@ function eventEmitter(ctor) {
 
 module.exports = eventEmitter;
 
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 const MarzipanoViewer = require('./MarzipanoViewer');
 
 
-class DesktopViewer extends MarzipanoViewer {
+module.exports = class DesktopViewer extends MarzipanoViewer {
 
-    constructor(panoElement) {
-        super('desktop', panoElement, window.sceneDataDesktop);
+  constructor(panoElement) {
+    super('desktop', panoElement, window.sceneDataDesktop);
 
-        this.autorotateData;
-        this.firstLoad = true;
-
-
-        this.autorotateToggleElement = document.querySelector('#autorotateToggle');
-        this.sceneNameElement = document.querySelector('#titleBar .sceneName');
-
-        const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
-
-        this.switchScene(groupedSceneData[this.initialScene]);
-    }
-
-    createScene(viewer, source, geometry, data) {
-
-        // [3] Create the "eyes" or view.
-        let limiter = this.Marzipano.RectilinearView.limit.traditional(
-            this.sceneData.faceSize,
-            this.deg2rad(100),
-            this.deg2rad(120));
-        const view = new this.Marzipano.RectilinearView(data.initialViewParameters, limiter);
-
-        // The current scene does not change when creating a scene in this way.
-        const scene = viewer.createScene({
-            source: source,
-            geometry: geometry,
-            view: view,
-            pinFirstLevel: true
-        });
-
-        const hotspotContainer = scene.hotspotContainer();
-        // Create link hotspots.
-        data.linkHotspots.forEach((hotspot) => {
-            let element = super.createLinkHotspotElement.call(this, hotspot, this.switchScene);
-            hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-        });
-
-        // Create info hotspots.
-        data.infoHotspots.forEach((hotspot) => {
-            let element = super.createInfoHotspotElement(hotspot, this.panoElement);
-            hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-        });
-
-        return { scene, view, data };
-    }
-
-    switchScene(scene) {
+    this.autorotateData;
+    this.firstLoad = true;
 
 
-        const alteredViewParams = this.firstLoad ?
-            scene.data.initialViewParameters :
-            this.getTransitionRotation(this.currentData, scene.data);
+    this.autorotateToggleElement = document.querySelector('#autorotateToggle');
+    this.sceneNameElement = document.querySelector('#titleBar .sceneName');
 
-        this.firstLoad = false;
+    const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
-        scene.view.setParameters(alteredViewParams);
+    this.switchScene(groupedSceneData[this.initialScene]);
+  }
 
-        // overrides the this.currentXYZ variables.
-        // I need those variables intact for altering the intial view params though. So do this after.
-        this.cacheSceneVariables.call(this, scene);
-        scene.scene.switchTo();
-    }
+  createScene(viewer, source, geometry, data) {
+
+    // [3] Create the "eyes" or view.
+    let limiter = this.Marzipano.RectilinearView.limit.traditional(
+      this.sceneData.faceSize,
+      this.deg2rad(100),
+      this.deg2rad(120));
+    const view = new this.Marzipano.RectilinearView(data.initialViewParameters, limiter);
+
+    // The current scene does not change when creating a scene in this way.
+    const scene = viewer.createScene({
+      source: source,
+      geometry: geometry,
+      view: view,
+      pinFirstLevel: true
+    });
+
+    const hotspotContainer = scene.hotspotContainer();
+    // Create link hotspots.
+    data.linkHotspots.forEach((hotspot) => {
+      let element = super.createLinkHotspotElement.call(this, hotspot, this.switchScene);
+      hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+    });
+
+    // Create info hotspots.
+    data.infoHotspots.forEach((hotspot) => {
+      let element = super.createInfoHotspotElement(hotspot, this.panoElement);
+      hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+    });
+
+    return { scene, view, data };
+  }
+
+  switchScene(scene) {
+
+
+    const alteredViewParams = this.firstLoad ?
+      scene.data.initialViewParameters :
+      this.getTransitionRotation(this.currentData, scene.data);
+
+    this.firstLoad = false;
+
+    scene.view.setParameters(alteredViewParams);
+
+    // overrides the this.currentXYZ variables.
+    // I need those variables intact for altering the intial view params though. So do this after.
+    this.cacheSceneVariables.call(this, scene);
+    scene.scene.switchTo();
+  }
 
 }
 
-},{"./MarzipanoViewer":120}],119:[function(require,module,exports){
+},{"./MarzipanoViewer":121}],120:[function(require,module,exports){
 /*
  * Copyright 2016 Google Inc. All rights reserved.
  *
@@ -25437,778 +25440,803 @@ result.roll = bank;
 
 */
 
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 const Marzipano = require('marzipano');
+const { tiledImageSource } = require('./utils');
 
-class MarzipanoViewer {
+module.exports = class MarzipanoViewer {
 
-    /**
-     * 
-     * @param {string} environment 
-     * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-     */
-    constructor(environment, panoElement, sceneData) {
+  /**
+   * 
+   * @param {string} environment 
+   * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
+   */
+  constructor(environment, panoElement, sceneData) {
 
-        this.panoElement = panoElement;
-        this.environment = this.prepareEnvironment(environment);
-        this.initialScene = 0;
-        this.rotationMaps = this.sceneTransitionRotationMapping();
+    this.panoElement = panoElement;
+    this.environment = this.prepareEnvironment(environment);
+    this.initialScene = 0;
+    this.rotationMaps = this.sceneTransitionRotationMapping();
 
-        this.Marzipano = Marzipano;
-        this.screenfull = window.screenfull;
-        this.sceneData = sceneData;
+    this.Marzipano = Marzipano;
+    this.screenfull = window.screenfull;
+    this.sceneData = sceneData;
 
-        this.bowser = this.Marzipano.dependencies.bowser;
-        this.mat4 = this.Marzipano.dependencies.glMatrix.mat4;
-        this.quat = this.Marzipano.dependencies.glMatrix.quat;
+    this.bowser = this.Marzipano.dependencies.bowser;
+    this.mat4 = this.Marzipano.dependencies.glMatrix.mat4;
+    this.quat = this.Marzipano.dependencies.glMatrix.quat;
 
-        this.believedDesktop = this.isBelievedDesktop(environment);
+    this.believedDesktop = this.isBelievedDesktop(environment);
 
-        // Viewer options. Choices here: http://www.marzipano.net/reference/global.html#registerDefaultControls
-        let viewerOpts = {
-            controls: {
-                // We'll default to mouse/pointer control, I can turn on VR gyro control on user demand.
-                mouseViewMode: this.sceneData.settings.mouseViewMode || false,
-                scrollZoom: false,
-            }
-        };
+    // Viewer options. Choices here: http://www.marzipano.net/reference/global.html#registerDefaultControls
+    let viewerOpts = {
+      controls: {
+        // We'll default to mouse/pointer control, I can turn on VR gyro control on user demand.
+        mouseViewMode: this.sceneData.settings.mouseViewMode || false,
+        scrollZoom: false,
+      }
+    };
 
-        // Initialize viewer.
-        this.viewer = new this.Marzipano.Viewer(this.panoElement, viewerOpts);
+    // Initialize viewer.
+    this.viewer = new this.Marzipano.Viewer(this.panoElement, viewerOpts);
 
-        this.currentScene = null;
-        this.defaultView = null;
-        this.currentData = {};
-        this.currentContainers = [];
-        this.currentLayers = [];
+    this.currentScene = null;
+    this.defaultView = null;
+    this.currentData = {};
+    this.currentContainers = [];
+    this.currentLayers = [];
+  }
+
+
+  setupSceneBehaviour(sceneCreator, sceneSwitcher) {
+
+    // Create scenes using the provided data json
+    this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
+
+    this.cacheSceneVariables(this.scenes[this.initialScene]);
+
+    return this.scenes;
+  }
+
+  // Do I need to make these 180s as floats?
+  // JS only has the Number type for all numbers though, probably not an issue.
+  deg2rad(deg) {
+    return deg * Math.PI / 180;
+  }
+
+  rad2deg(rad) {
+    return rad * 180 / Math.PI;
+  }
+
+  isBelievedDesktop() {
+    return this.environment !== 'mobileVR';
+  }
+
+
+  /**
+   * 
+   * @param {[]} _data 
+   * @param {() => {}} sceneCreator 
+   */
+  createScenesFromData(_data, createScene, viewer) {
+
+    return _data.map((mData, i) => {
+
+      // [1] get the images
+      const source = tiledImageSource(mData.id);
+
+      // [2] Create the geometry
+      let geometry = new this.Marzipano.CubeGeometry(this.sceneData.cubeGeometryLevels);
+
+      // TODO: Maybe move the groupedSceneData return object into it.
+      // Then desktop can return Scene and VR can return Stage. Does it even matter though?
+      const { scene, view, containers, layers, data } = createScene.call(this, viewer, source, geometry, mData);
+
+      const groupedSceneData = {
+        data: data,
+        scene: scene,
+        containers: containers,
+        layers: layers,
+        view: view
+      };
+
+      return groupedSceneData;
+    });
+  }
+
+
+  cacheSceneVariables(scene) {
+
+    // // Doubt I'll need this. Could prove useful for some layer manipulation though?
+    this.currentView = scene.view;
+    this.currentScene = scene.scene;
+    this.currentContainers = scene.containers;
+    this.currentData = scene.data;
+    this.currentLayers = scene.layers;
+  }
+
+
+  sanitize(s) {
+    return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
+  }
+
+
+  createLinkHotspotElement(hotspot, switchScene) {
+
+    // Create wrapper element to hold icon and tooltip.
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('hotspot');
+    wrapper.classList.add('link-hotspot');
+
+    // Create image element.
+    let icon = document.createElement('img');
+    icon.src = 'icons/link.svg';
+    icon.classList.add('link-hotspot-icon');
+
+    // Add click event handler.
+    wrapper.addEventListener('click', () => {
+      this.currentScene = switchScene.call(this, this.findSceneById(hotspot.target));
+    });
+
+    // Prevent touch and scroll events from reaching the parent element.
+    // This prevents the view control logic from interfering with the hotspot.
+    this.stopTouchAndScrollEventPropagation(wrapper);
+
+    // Create tooltip element.
+    let tooltip = document.createElement('div');
+    tooltip.classList.add('hotspot-tooltip');
+    tooltip.classList.add('link-hotspot-tooltip');
+
+    wrapper.appendChild(icon);
+    wrapper.appendChild(tooltip);
+
+    let container = document.createElement('div');
+    container.appendChild(wrapper);
+
+    return container;
+  }
+
+
+  createInfoHotspotElement(hotspot) {
+
+    let container = document.createElement('div');
+    container.setAttribute('data-info-hotspot-container-id', hotspot.id);
+
+    // Create wrapper element to hold icon and tooltip.
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('hotspot');
+    wrapper.classList.add('info-hotspot');
+
+    // Create hotspot/tooltip header.
+    let header = document.createElement('div');
+    header.classList.add('info-hotspot-header');
+    header.setAttribute('data-info-hotspot-id', hotspot.id);
+
+    // Create image element for the little icon.
+    let iconWrapper = document.createElement('div');
+    iconWrapper.classList.add('info-hotspot-icon-wrapper');
+
+    // Construct header element.
+    header.appendChild(iconWrapper);
+
+    // Add content to the content container
+    let content = document.createElement('div');
+    content.classList.add('info-hotspot-content');
+    content.setAttribute('data-info-hotspot-id', hotspot.id);
+
+    let hotspotElem = document.getElementById(`hotspot-${hotspot.id}`);
+    if (hotspotElem) {
+      content.appendChild(hotspotElem.cloneNode(true));
+    }
+
+    if (hotspot.hideInMobile) {
+      wrapper.classList.add('is-hidden-inline');
+      content.classList.add('is-hidden-inline');
     }
 
 
-    setupSceneBehaviour(sceneCreator, sceneSwitcher) {
-
-        // Create scenes using the provided data json
-        this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
-
-        this.cacheSceneVariables(this.scenes[this.initialScene]);
-
-        return this.scenes;
-    }
-
-    // Do I need to make these 180s as floats?
-    // JS only has the Number type for all numbers though, probably not an issue.
-    deg2rad(deg) {
-        return deg * Math.PI / 180;
-    }
-
-    rad2deg(rad) {
-        return rad * 180 / Math.PI;
-    }
-
-    isBelievedDesktop() {
-        return this.environment !== 'mobileVR';
-    }
+    // Place header into wrapper element.
+    wrapper.appendChild(header);
+    (this.believedDesktop ? this.panoElement : wrapper).appendChild(content);
 
 
-    /**
-     * 
-     * @param {[]} _data 
-     * @param {() => {}} sceneCreator 
-     */
-    createScenesFromData(_data, createScene, viewer) {
 
-        return _data.map((mData, i) => {
+    let toggle = (event) => {
+      let id = event.currentTarget.getAttribute('data-info-hotspot-id');
 
-            // [1] get the images
-            let urlPrefix = 'tiles/' + mData.id;
-            let source = this.Marzipano.ImageUrlSource.fromString(
-                urlPrefix + '/{z}/{f}/{y}/{x}.jpg',
-                { cubeMapPreviewUrl: urlPrefix + '/preview.jpg' });
+      event.preventDefault();
 
-            // [2] Create the geometry
-            let geometry = new this.Marzipano.CubeGeometry(this.sceneData.cubeGeometryLevels);
+      document.querySelectorAll(`[data-info-hotspot-id="${id}"]`).forEach(function (element) {
+        element.classList.toggle('is-visible');
 
-            // TODO: Maybe move the groupedSceneData return object into it.
-            // Then desktop can return Scene and VR can return Stage. Does it even matter though?
-            const { scene, view, containers, layers, data } = createScene.call(this, viewer, source, geometry, mData);
-
-            const groupedSceneData = {
-                data: data,
-                scene: scene,
-                containers: containers,
-                layers: layers,
-                view: view
-            };
-
-            return groupedSceneData;
-        });
-    }
-
-
-    cacheSceneVariables(scene) {
-
-        // // Doubt I'll need this. Could prove useful for some layer manipulation though?
-        this.currentView = scene.view;
-        this.currentScene = scene.scene;
-        this.currentContainers = scene.containers;
-        this.currentData = scene.data;
-        this.currentLayers = scene.layers;
-    }
-
-
-    sanitize(s) {
-        return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
-    }
-
-
-    createLinkHotspotElement(hotspot, switchScene) {
-
-        // Create wrapper element to hold icon and tooltip.
-        let wrapper = document.createElement('div');
-        wrapper.classList.add('hotspot');
-        wrapper.classList.add('link-hotspot');
-
-        // Create image element.
-        let icon = document.createElement('img');
-        icon.src = 'icons/link.svg';
-        icon.classList.add('link-hotspot-icon');
-
-        // Add click event handler.
-        wrapper.addEventListener('click', () => {
-            this.currentScene = switchScene.call(this, this.findSceneById(hotspot.target));
-        });
-
-        // Prevent touch and scroll events from reaching the parent element.
-        // This prevents the view control logic from interfering with the hotspot.
-        this.stopTouchAndScrollEventPropagation(wrapper);
-
-        // Create tooltip element.
-        let tooltip = document.createElement('div');
-        tooltip.classList.add('hotspot-tooltip');
-        tooltip.classList.add('link-hotspot-tooltip');
-
-        wrapper.appendChild(icon);
-        wrapper.appendChild(tooltip);
-
-        let container = document.createElement('div');
-        container.appendChild(wrapper);
-
-        return container;
-    }
-
-
-    createInfoHotspotElement(hotspot) {
-
-        let container = document.createElement('div');
-        container.setAttribute('data-info-hotspot-container-id', hotspot.id);
-
-        // Create wrapper element to hold icon and tooltip.
-        let wrapper = document.createElement('div');
-        wrapper.classList.add('hotspot');
-        wrapper.classList.add('info-hotspot');
-
-        // Create hotspot/tooltip header.
-        let header = document.createElement('div');
-        header.classList.add('info-hotspot-header');
-        header.setAttribute('data-info-hotspot-id', hotspot.id);
-
-        // Create image element for the little icon.
-        let iconWrapper = document.createElement('div');
-        iconWrapper.classList.add('info-hotspot-icon-wrapper');
-
-        // Construct header element.
-        header.appendChild(iconWrapper);
-
-        // Add content to the content container
-        let content = document.createElement('div');
-        content.classList.add('info-hotspot-content');
-        content.setAttribute('data-info-hotspot-id', hotspot.id);
-
-        let hotspotElem = document.getElementById(`hotspot-${hotspot.id}`);
-        if (hotspotElem) {
-            content.appendChild(hotspotElem.cloneNode(true));
+        // reappending the open hotspot brings it on top of other hotspots
+        // playing with z-index wouldn't work as we are dealing with transformed elements
+        if (element.classList.contains('is-visible')) {
+          document.querySelectorAll(`[data-info-hotspot-container-id="${id}"]`).forEach(function (element) {
+            element.parentNode.appendChild(element);
+          });
         }
+      });
+    };
 
-        if (hotspot.hideInMobile) {
-            wrapper.classList.add('is-hidden-inline');
-            content.classList.add('is-hidden-inline');
-        }
+    // Show content when hotspot is clicked.
+    wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
 
-
-        // Place header into wrapper element.
-        wrapper.appendChild(header);
-        (this.believedDesktop ? this.panoElement : wrapper).appendChild(content);
-
-
-
-        let toggle = (event) => {
-            let id = event.currentTarget.getAttribute('data-info-hotspot-id');
-
-            event.preventDefault();
-
-            document.querySelectorAll(`[data-info-hotspot-id="${id}"]`).forEach(function (element) {
-                element.classList.toggle('is-visible');
-
-                // reappending the open hotspot brings it on top of other hotspots
-                // playing with z-index wouldn't work as we are dealing with transformed elements
-                if (element.classList.contains('is-visible')) {
-                    document.querySelectorAll(`[data-info-hotspot-container-id="${id}"]`).forEach(function (element) {
-                        element.parentNode.appendChild(element);
-                    });
-                }
-            });
-        };
-
-        // Show content when hotspot is clicked.
-        wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
-
-        let closeIcon = content.querySelector('[data-hotspot-close]');
-        if (closeIcon) {
-            closeIcon.setAttribute('data-info-hotspot-id', hotspot.id);
-            closeIcon.addEventListener('click', toggle);
-        }
-
-        // Prevent touch and scroll events from reaching the parent element.
-        // This prevents the view control logic from interfering with the hotspot.
-        this.stopTouchAndScrollEventPropagation(wrapper);
-
-        container.appendChild(wrapper);
-
-        return container;
+    let closeIcon = content.querySelector('[data-hotspot-close]');
+    if (closeIcon) {
+      closeIcon.setAttribute('data-info-hotspot-id', hotspot.id);
+      closeIcon.addEventListener('click', toggle);
     }
 
     // Prevent touch and scroll events from reaching the parent element.
-    stopTouchAndScrollEventPropagation(element) {
-        let eventList = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel', 'mousewheel'];
+    // This prevents the view control logic from interfering with the hotspot.
+    this.stopTouchAndScrollEventPropagation(wrapper);
 
-        for (let i = 0; i < eventList.length; i++) {
-            element.addEventListener(eventList[i], function (event) {
-                event.stopPropagation();
-            });
-        }
+    container.appendChild(wrapper);
+
+    return container;
+  }
+
+  // Prevent touch and scroll events from reaching the parent element.
+  stopTouchAndScrollEventPropagation(element) {
+    let eventList = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel', 'mousewheel'];
+
+    for (let i = 0; i < eventList.length; i++) {
+      element.addEventListener(eventList[i], function (event) {
+        event.stopPropagation();
+      });
     }
+  }
 
-    findSceneById(id) {
-        for (let i = 0; i < this.scenes.length; i++) {
-            if (this.scenes[i].data.id === id) {
-                return this.scenes[i];
-            }
-        }
-        return null;
+  findSceneById(id) {
+    for (let i = 0; i < this.scenes.length; i++) {
+      if (this.scenes[i].data.id === id) {
+        return this.scenes[i];
+      }
     }
+    return null;
+  }
 
-    findSceneDataById(id) {
-        for (let i = 0; i < this.sceneData.scenes.length; i++) {
-            if (this.sceneData.scenes[i].id === id) {
-                return this.sceneData.scenes[i];
-            }
-        }
-        return null;
+  findSceneDataById(id) {
+    for (let i = 0; i < this.sceneData.scenes.length; i++) {
+      if (this.sceneData.scenes[i].id === id) {
+        return this.sceneData.scenes[i];
+      }
     }
+    return null;
+  }
 
-    /**
-     * 
-     * @param {String} env 
-     */
-    prepareEnvironment(env) {
+  /**
+   * 
+   * @param {String} env 
+   */
+  prepareEnvironment(env) {
 
-        if (window.matchMedia) {
-            let setMode = function () {
-                // The viewport is, at most 
-                if (mql.matches) {
-                    document.body.classList.remove('desktop');
-                    document.body.classList.add('mobile');
-                    // document.body.innerHTML = 'mobile';
-                } else {
-                    document.body.classList.remove('mobile');
-                    document.body.classList.add('desktop');
-                    // document.body.innerHTML = 'desktop';
-                }
-            };
-            let mql = matchMedia('(max-width: 500px), (max-height: 500px)');
-            setMode();
-            mql.addListener(setMode);
+    if (window.matchMedia) {
+      let setMode = function () {
+        // The viewport is, at most 
+        if (mql.matches) {
+          document.body.classList.remove('desktop');
+          document.body.classList.add('mobile');
+          // document.body.innerHTML = 'mobile';
         } else {
-            document.body.classList.add('desktop');
+          document.body.classList.remove('mobile');
+          document.body.classList.add('desktop');
+          // document.body.innerHTML = 'desktop';
         }
-
-        return env;
+      };
+      let mql = matchMedia('(max-width: 500px), (max-height: 500px)');
+      setMode();
+      mql.addListener(setMode);
+    } else {
+      document.body.classList.add('desktop');
     }
 
+    return env;
+  }
 
-    getTransitionRotation(from, to) {
 
-        return this.rotationMaps.from[from.id].to[to.id];
-    }
+  getTransitionRotation(from, to) {
 
-    // Could maybe be made into a file imported in the browser. Oh well.
-    sceneTransitionRotationMapping() {
-        return {
-            'from': {
-                'scene-0': {
-                    'to': {
-                        // Required for first load. From 0 to 0 is silly but go with it.
-                        'scene-0': {
-                            'yaw': 3.8,
-                            'pitch': 0.22798880022457624,
-                        },
-                        'scene-1': {
-                            'yaw': -2.8274448996260446,
-                            'pitch': 0.06012930486655321
-                        }
-                    }
-                },
-                'scene-1': {
-                    'to': {
-                        'scene-0': {
-                            'yaw': 0.145253345801045,
-                            'pitch': 0.07
-                        },
-                        'scene-2': {
-                            'yaw': -0.14971585481837835,
-                            'pitch': 0.07
-                        },
-                        'scene-3': {
-                            'yaw': 2.6021574657373403,
-                            'pitch': 0.09960663233749756
-                        }
-                    }
-                },
-                'scene-2': {
-                    'to': {
-                        'scene-1': {
-                            'yaw': 2.432133517575684,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-3': {
-                    'to': {
-                        'scene-1': {
-                            'yaw': -0.4469404282362994,
-                            'pitch': 0.07244311540308956
-                        },
-                        'scene-4': {
-                            'yaw': -1.3994865291876781,
-                            'pitch': 0.05190705801597417
-                        },
-                        'scene-5': {
-                            'yaw': 1.403211200196525,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-4': {
-                    'to': {
-                        'scene-3': {
-                            'yaw': 1.0620391999023013,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-5': {
-                    'to': {
-                        'scene-3': {
-                            'yaw': -0.5201367601720577,
-                            'pitch': 0.11417302060570478
-                        }
-                    }
-                }
+    return this.rotationMaps.from[from.id].to[to.id];
+  }
+
+  // Could maybe be made into a file imported in the browser. Oh well.
+  sceneTransitionRotationMapping() {
+    return {
+      'from': {
+        'scene-0': {
+          'to': {
+            // Required for first load. From 0 to 0 is silly but go with it.
+            'scene-0': {
+              'yaw': 3.8,
+              'pitch': 0.22798880022457624,
+            },
+            'scene-1': {
+              'yaw': -2.8274448996260446,
+              'pitch': 0.06012930486655321
             }
+          }
+        },
+        'scene-1': {
+          'to': {
+            'scene-0': {
+              'yaw': 0.145253345801045,
+              'pitch': 0.07
+            },
+            'scene-2': {
+              'yaw': -0.14971585481837835,
+              'pitch': 0.07
+            },
+            'scene-3': {
+              'yaw': 2.6021574657373403,
+              'pitch': 0.09960663233749756
+            }
+          }
+        },
+        'scene-2': {
+          'to': {
+            'scene-1': {
+              'yaw': 2.432133517575684,
+              'pitch': 0.07
+            }
+          }
+        },
+        'scene-3': {
+          'to': {
+            'scene-1': {
+              'yaw': -0.4469404282362994,
+              'pitch': 0.07244311540308956
+            },
+            'scene-4': {
+              'yaw': -1.3994865291876781,
+              'pitch': 0.05190705801597417
+            },
+            'scene-5': {
+              'yaw': 1.403211200196525,
+              'pitch': 0.07
+            }
+          }
+        },
+        'scene-4': {
+          'to': {
+            'scene-3': {
+              'yaw': 1.0620391999023013,
+              'pitch': 0.07
+            }
+          }
+        },
+        'scene-5': {
+          'to': {
+            'scene-3': {
+              'yaw': -0.5201367601720577,
+              'pitch': 0.11417302060570478
+            }
+          }
         }
+      }
     }
+  }
 }
 
-},{"marzipano":56}],121:[function(require,module,exports){
+},{"./utils":124,"marzipano":57}],122:[function(require,module,exports){
 const MarzipanoViewer = require('./MarzipanoViewer');
 const DeviceOrientationStrategy = require('./DeviceOrientationStrategy');
 
-class VRViewer extends MarzipanoViewer {
+module.exports = class VRViewer extends MarzipanoViewer {
 
-    constructor(panoElement) {
+  constructor(panoElement) {
 
-        super('mobileVR', panoElement, window.sceneDataVR);
+    super('mobileVR', panoElement, window.sceneDataVR);
 
-        this.gyroEnabled;
-        this.viewingTimeoutID = null;
-        this.currentHotspotCandidate = null;
+    this.gyroEnabled;
+    this.viewingTimeoutID = null;
+    this.currentHotspotCandidate = null;
 
-        this.openedHotspot = null;
-        this.previousFrameRotation = { yaw: 0, pitch: 0, roll: 0 };
+    this.openedHotspot = null;
+    this.previousFrameRotation = { yaw: 0, pitch: 0, roll: 0 };
 
-        // For altering the initial direction based upon previous scene
-        this.sceneEntryViewDirection = null;
+    // For altering the initial direction based upon previous scene
+    this.sceneEntryViewDirection = null;
 
-        this.lookTriggerThreshold = 1.5 * 1000;
-        this.openPopupRadianThreshhold = this.deg2rad(5);
-        // This is the single column threshold, it gets doubled when exiting 2 column popups
-        this.closePopupHorizontalRadianThreshholdPerColumn = this.deg2rad(15);
+    this.lookTriggerThreshold = 1.5 * 1000;
+    this.openPopupRadianThreshhold = this.deg2rad(5);
+    // This is the single column threshold, it gets doubled when exiting 2 column popups
+    this.closePopupHorizontalRadianThreshholdPerColumn = this.deg2rad(15);
 
-        this.orientationMethodID = 'deviceOrientation';
+    this.orientationMethodID = 'deviceOrientation';
 
-        this.deviceOrientationControlFunction = DeviceOrientationStrategy;
-        this.deviceOrientationController;
+    this.deviceOrientationControlFunction = DeviceOrientationStrategy;
+    this.deviceOrientationController;
 
-        const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
+    const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
-        this.setupGyroControls(groupedSceneData);
+    this.setupGyroControls(groupedSceneData);
 
-        this.switchScene(groupedSceneData[this.initialScene]);
+    this.switchScene(groupedSceneData[this.initialScene]);
+  }
+
+
+  // Shared signature with DesktopViewer.createScene() but I don't use it all.
+  // TODO: Maybe accept opts object.
+  createScene(viewer, source, geometry, data) {
+
+    const stage = viewer.stage();
+
+    const leftRightRects = [
+      { rect: { relativeWidth: 0.5, relativeX: 0 } }, // left
+      { rect: { relativeWidth: 0.5, relativeX: 0.5 } }  // right
+    ];
+
+    const opts = {
+      source: source,
+      geometry: geometry,
+      // pinFirstLevel: true,
+      textureStoreOpts: {
+        previouslyVisibleCacheSize: 32
+      },
+      layerOpts: {
+        effects: null
+      }
+    };
+
+    const containers = [];
+    const layers = [];
+
+    const emptyView = new this.Marzipano.RectilinearView(data.initialViewParameters);
+    const scene = viewer.createEmptyScene({ view: emptyView });
+
+    leftRightRects.forEach((rect, index) => {
+
+      opts.layerOpts.effects = rect;
+      const layer = scene.createLayer(opts);
+
+      // Probably don't need this but it might be useful for debugging or state checks.
+      layer.eyeSide = index === 0 ? 'left' : 'right';
+
+      // Add hotspots.
+      const hotspotContainer = new this.Marzipano.HotspotContainer(
+        viewer.domElement(),
+        stage,
+        emptyView,
+        viewer.renderLoop(),
+        rect);
+
+      // Create link hotspots.
+      data.linkHotspots.forEach((hotspotData) => {
+        const element = super.createLinkHotspotElement.call(this, hotspotData, this.switchScene);
+        element.dataset.hotspot_target = hotspotData.target;
+        hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
+      });
+
+      // Create info hotspots.
+      data.infoHotspots.forEach((hotspotData) => {
+        if (hotspotData.hideInVR) {
+          return; // We're in a .forEach function so we return instead of continue
+        }
+        const element = super.createInfoHotspotElement.call(this, hotspotData, layer);
+        element.dataset.hotspot_target = hotspotData.id;
+        hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
+      });
+
+      // Hide all containers at first.
+      hotspotContainer.hide();
+      containers.push(hotspotContainer);
+      // Probably don't need to cache layers in a scene based implementation.
+      // scene.listLayers() gives you the layers but I'm too paranoid to leave it to chance at this point.
+      layers.push(layer);
+    });
+
+    if (data.id === 'scene-0') {
+      this.showHotspotZero(containers);
     }
 
+    // Should probably alter this to get the hotspots yaw and pitch form the container.listHotspots().
 
-    // Shared signature with DesktopViewer.createScene() but I don't use it all.
-    // TODO: Maybe accept opts object.
-    createScene(viewer, source, geometry, data) {
+    // Add a little extra data for using in view collision checks.
 
-        const stage = viewer.stage();
+    const infoData = data.infoHotspots
+      .filter(ih => Object.keys(ih).includes('hideInVR') === false)
+      // We don't want collisions with hotspot 0
+      .filter(ih => ih.id !== '0')
+      .map(ih => { return { yaw: ih.yaw, pitch: ih.pitch, target: ih.id, columns: ih.columns || 1 }; });
 
-        const leftRightRects = [
-            { rect: { relativeWidth: 0.5, relativeX: 0 } }, // left
-            { rect: { relativeWidth: 0.5, relativeX: 0.5 } }  // right
-        ];
+    const linkData = data.linkHotspots.map(lh => { return { yaw: lh.yaw, pitch: lh.pitch, target: lh.target }; });
 
-        const opts = {
-            source: source,
-            geometry: geometry,
-            // pinFirstLevel: true,
-            textureStoreOpts: {
-                previouslyVisibleCacheSize: 32
-            },
-            layerOpts: {
-                effects: null
-            }
-        };
+    data.vrCollisionData = [...infoData, ...linkData];
 
-        const containers = [];
-        const layers = [];
+    // Useful later for deciding where to center the view on scene change.
+    data.firstLoad = true;
 
-        const emptyView = new this.Marzipano.RectilinearView(data.initialViewParameters);
-        const scene = viewer.createEmptyScene({ view: emptyView });
+    // Gets deconstructed on the other side.
+    return { scene: scene, view: emptyView, containers, layers, data };
+  }
 
-        leftRightRects.forEach((rect, index) => {
 
-            opts.layerOpts.effects = rect;
-            const layer = scene.createLayer(opts);
+  showHotspotZero(containers) {
 
-            // Probably don't need this but it might be useful for debugging or state checks.
-            layer.eyeSide = index === 0 ? 'left' : 'right';
+    const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(containers, '0');
+    const leftElement = leftHotspot.domElement();
+    this.clickInfoHotspot(leftElement);
 
-            // Add hotspots.
-            const hotspotContainer = new this.Marzipano.HotspotContainer(
-                viewer.domElement(),
-                stage,
-                emptyView,
-                viewer.renderLoop(),
-                rect);
+  }
 
-            // Create link hotspots.
-            data.linkHotspots.forEach((hotspotData) => {
-                const element = super.createLinkHotspotElement.call(this, hotspotData, this.switchScene);
-                element.dataset.hotspot_target = hotspotData.target;
-                hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
-            });
 
-            // Create info hotspots.
-            data.infoHotspots.forEach((hotspotData) => {
-                if (hotspotData.hideInVR) {
-                    return; // We're in a .forEach function so we return instead of continue
-                }
-                const element = super.createInfoHotspotElement.call(this, hotspotData, layer);
-                element.dataset.hotspot_target = hotspotData.id;
-                hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
-            });
+  switchScene(scene) {
 
-            // Hide all containers at first.
-            hotspotContainer.hide();
-            containers.push(hotspotContainer);
-            // Probably don't need to cache layers in a scene based implementation.
-            // scene.listLayers() gives you the layers but I'm too paranoid to leave it to chance at this point.
-            layers.push(layer);
-        });
+    // Switch the current containers.
+    // I would prefer to directly show and hide elements [0] and [1] from the respective arrays.
+    // However when loading the app `this.currentContainers` is empty when I'm pretty sure it should be populated.
+    // I can only assume it's a `this` issue or some wonky state. So to be safe I'm sticking to `Array.forEach()`
+    this.currentContainers.forEach(c => {
+      c.hide();
+    });
+    scene.containers.forEach(c => {
+      c.show();
+    });
 
-        if (data.id === 'scene-0') {
-            this.showHotspotZero(containers);
+    // Clear any hotspot looking timers.
+    clearTimeout(this.viewingTimeoutID);
+    this.viewingTimeoutID = null;
+
+
+    const alteredViewParams = this.getTransitionRotation(this.currentData, scene.data);
+
+    scene.view.setParameters(alteredViewParams);
+
+    // overrides the this.currentXYZ variables. 
+    // I need those variables intact for altering the intial view params though. So do this after.
+    this.cacheSceneVariables.call(this, scene);
+
+    scene.scene.switchTo({}, () => {
+      // This function is called when scene transition finishes. Maybe it will be useful later?
+      // Especially if we want to alter the initial view rotation by our previous scenes values.
+    });
+
+  }
+
+
+  // Could pass in the deviceOrientationControlFunction
+  setupGyroControls(groupedSceneData) {
+
+    this.Marzipano.dependencies.eventEmitter(this.deviceOrientationControlFunction);
+    this.deviceOrientationController = new this.deviceOrientationControlFunction();
+    // Register the custom control method.  
+    const instantEnable = true;
+    this.viewer.controls().registerMethod(this.orientationMethodID, this.deviceOrientationController, instantEnable);
+
+    this.deviceOrientationController.addEventListener('updatedYawPitchRoll', (_, rotation) => {
+
+      // if (this.switchingScenes) { return; }
+      this.computeLookDirection.call(this, rotation, this.currentScene, this.currentView);
+    });
+
+    // For testing view direction on desktop only
+    // This is also useful if you want to know the yaw and pitch for placing desktop
+    // groupedSceneData.forEach(gsd => {
+    //     gsd.view.addEventListener('change', () => {
+
+    //         this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
+    //     });
+    // })
+  }
+
+
+  /**
+   * I worry that this isn't targetting the right elements....
+   * 
+   * @param {Boolean} on 
+   */
+  setTimerClass(on) {
+    this.panoElement.classList.toggle('is-opening', on);
+  }
+
+
+  clickInfoHotspot(element) {
+    element.querySelector('.info-hotspot-header').click();
+  }
+
+
+  clickLinkHotspot(element) {
+    element.querySelector('.link-hotspot').click();
+  }
+
+
+  // 
+  /**
+   * Clamp a radian rotation between -Pi and Pi.
+   * 0 is looking directly at the spot.
+   * Negative results are moving left.
+   * Positive results are moving right.
+   * @param {Number} rotation 
+   */
+  clampOverflowRotation(rotation) {
+    const pi2 = (Math.PI * 2);
+    let radian = (rotation + Math.PI) % pi2;
+
+    if (radian < 0) radian += pi2;
+
+    return radian - Math.PI;
+  }
+
+
+  minimumLookAtBounds(spot, params) {
+
+    const yawDiff = spot.yaw - params.yaw;
+    const pitchDiff = spot.pitch - params.pitch;
+    const lookAtUpperBound = yawDiff < this.openPopupRadianThreshhold && pitchDiff < this.openPopupRadianThreshhold;
+    const lookAtLowerBound = yawDiff > -this.openPopupRadianThreshhold && pitchDiff > -this.openPopupRadianThreshhold;
+
+    return { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound };
+  }
+
+
+  minimumLookAwayBounds(spot, params) {
+
+    // Gotta normalise the yaw diff a bit
+    const yawDiff = this.clampOverflowRotation(spot.yaw - params.yaw);
+
+    // > < is flipped from the {lookAt} bounds
+    // we're trying to get FURTHER AWAY to close, not CLOSE ENOUGH to open
+    const lookAwayMinimumUpperBound = yawDiff > this.closePopupHorizontalRadianThreshholdPerColumn * spot.columns;
+    const lookAwayMinimumLowerBound = yawDiff < -this.closePopupHorizontalRadianThreshholdPerColumn * spot.columns;
+
+    return { yawDiff, lookAwayMinimumUpperBound, lookAwayMinimumLowerBound };
+  }
+
+
+  // By using prototype.call() {this} will be the normal class scope and have access to class variables.
+  computeLookDirection(rotation, currentScene, currentView) {
+
+    // pitch, roll and yaw in radians
+    const params = currentView.parameters();
+
+    // Nothing selected or currently selecting. Go find a hotspot
+    if (!this.currentHotspotCandidate && !this.openedHotspot) {
+      // Haven't found and opened a hotspot yet.
+      // Lets go looking for one.
+      let hotspots = this.currentData.vrCollisionData;
+
+      // Loops the hotspots, look for one with a close enough pitch and yaw, select that as the candidate
+      for (let i = 0; i < hotspots.length; i++) {
+
+        if (this.currentHotspotCandidate) {
+          continue;
         }
 
-        // Should probably alter this to get the hotspots yaw and pitch form the container.listHotspots().
+        const spot = hotspots[i];
+        // compute a rotation difference
+        const { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound } = this.minimumLookAtBounds(spot, params);
 
-        // Add a little extra data for using in view collision checks.
+        // If that difference is within a tolerance then interact with the element.
+        if (lookAtUpperBound && lookAtLowerBound) {
 
-        const infoData = data.infoHotspots
-            .filter(ih => Object.keys(ih).includes('hideInVR') === false)
-            // We don't want collisions with hotspot 0
-            .filter(ih => ih.id !== '0')
-            .map(ih => { return { yaw: ih.yaw, pitch: ih.pitch, target: ih.id, columns: ih.columns || 1 }; });
+          this.currentHotspotCandidate = spot;
 
-        const linkData = data.linkHotspots.map(lh => { return { yaw: lh.yaw, pitch: lh.pitch, target: lh.target }; });
+          // Have we begun looking at any hotspot yet?
+          if (!this.viewingTimeoutID) {
 
-        data.vrCollisionData = [...infoData, ...linkData];
+            this.setTimerClass(true);
 
-        // Useful later for deciding where to center the view on scene change.
-        data.firstLoad = true;
+            this.viewingTimeoutID = setTimeout(() => {
 
-        // Gets deconstructed on the other side.
-        return { scene: scene, view: emptyView, containers, layers, data };
+              const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(this.currentContainers, this.currentHotspotCandidate.target);
+              const leftElement = leftHotspot.domElement();
+
+              this.setTimerClass(false);
+              this.viewingTimeoutID = null;
+
+              // this.currentHotspotCandidate = null;
+
+              // Is it an link or info hotspot?
+              if (leftElement.dataset.hotspot_target.includes('scene')) {
+                this.openedHotspot = null;
+                this.clickLinkHotspot(leftElement);
+              }
+              else {
+                this.openedHotspot = spot;
+                this.clickInfoHotspot(leftElement);
+              }
+            }, this.lookTriggerThreshold);
+          }
+        }
+      }
+
     }
+    // We have a candidate and we're currently counting down. Check for look away during this time.
+    else if (this.currentHotspotCandidate && !this.openedHotspot) {
 
+      const spot = this.currentHotspotCandidate;
 
-    showHotspotZero(containers) {
+      // compute a rotation difference
+      const { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound } = this.minimumLookAtBounds(spot, params);
 
-        const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(containers, '0');
+      // Are we now looking away from the candidate?
+      if (!lookAtUpperBound || !lookAtLowerBound) {
+        clearTimeout(this.viewingTimeoutID);
+        // The clearTiemout function doesn't reset the variable to something safe.
+        this.viewingTimeoutID = null;
+        this.openedHotspot = null;
+        this.currentHotspotCandidate = null;
+        this.setTimerClass(false);
+        return;
+      }
+    }
+    // A hotspot has been opened, now start trying to close it.
+    else if (this.openedHotspot) {
+
+      const spot = this.openedHotspot;
+
+      const { yawDiff, lookAwayMinimumUpperBound, lookAwayMinimumLowerBound } = this.minimumLookAwayBounds(spot, params);
+
+      if (lookAwayMinimumLowerBound || lookAwayMinimumUpperBound) {
+
+        const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(this.currentContainers, spot.target);
         const leftElement = leftHotspot.domElement();
+
         this.clickInfoHotspot(leftElement);
-
-    }
-
-
-    switchScene(scene) {
-
-        // Switch the current containers.
-        // I would prefer to directly show and hide elements [0] and [1] from the respective arrays.
-        // However when loading the app `this.currentContainers` is empty when I'm pretty sure it should be populated.
-        // I can only assume it's a `this` issue or some wonky state. So to be safe I'm sticking to `Array.forEach()`
-        this.currentContainers.forEach(c => {
-            c.hide();
-        });
-        scene.containers.forEach(c => {
-            c.show();
-        });
-
-        // Clear any hotspot looking timers.
+        // Reset various cached variables
         clearTimeout(this.viewingTimeoutID);
         this.viewingTimeoutID = null;
+        this.openedHotspot = null;
+      }
+    }
+  }
 
+  getHotspotsFromHotspotTarget(containers, target) {
 
-        const alteredViewParams = this.getTransitionRotation(this.currentData, scene.data);
+    const hotspots = [...containers[0].listHotspots()];
 
-        scene.view.setParameters(alteredViewParams);
+    for (let i = 0; i < hotspots.length; i++) {
+      const d = hotspots[i].domElement();
 
-        // overrides the this.currentXYZ variables. 
-        // I need those variables intact for altering the intial view params though. So do this after.
-        this.cacheSceneVariables.call(this, scene);
-
-        scene.scene.switchTo({}, () => {
-            // This function is called when scene transition finishes. Maybe it will be useful later?
-            // Especially if we want to alter the initial view rotation by our previous scenes values.
-        });
-
+      if (d.dataset.hotspot_target == target) {
+        const left = hotspots[i];
+        const right = containers[1].listHotspots()[i];
+        return { leftHotspot: left, rightHotspot: right };
+      }
     }
 
-
-    // Could pass in the deviceOrientationControlFunction
-    setupGyroControls(groupedSceneData) {
-
-        this.Marzipano.dependencies.eventEmitter(this.deviceOrientationControlFunction);
-        this.deviceOrientationController = new this.deviceOrientationControlFunction();
-        // Register the custom control method.  
-        const instantEnable = true;
-        this.viewer.controls().registerMethod(this.orientationMethodID, this.deviceOrientationController, instantEnable);
-
-        this.deviceOrientationController.addEventListener('updatedYawPitchRoll', (_, rotation) => {
-
-            // if (this.switchingScenes) { return; }
-            this.computeLookDirection.call(this, rotation, this.currentScene, this.currentView);
-        });
-
-        // For testing view direction on desktop only
-        // This is also useful if you want to know the yaw and pitch for placing desktop
-        // groupedSceneData.forEach(gsd => {
-        //     gsd.view.addEventListener('change', () => {
-
-        //         this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
-        //     });
-        // })
-    }
-
-
-    /**
-     * I worry that this isn't targetting the right elements....
-     * 
-     * @param {Boolean} on 
-     */
-    setTimerClass(on) {
-        this.panoElement.classList.toggle('is-opening', on);
-    }
-
-
-    clickInfoHotspot(element) {
-        element.querySelector('.info-hotspot-header').click();
-    }
-
-
-    clickLinkHotspot(element) {
-        element.querySelector('.link-hotspot').click();
-    }
-
-
-    // 
-    /**
-     * Clamp a radian rotation between -Pi and Pi.
-     * 0 is looking directly at the spot.
-     * Negative results are moving left.
-     * Positive results are moving right.
-     * @param {Number} rotation 
-     */
-    clampOverflowRotation(rotation) {
-        const pi2 = (Math.PI * 2);
-        let radian = (rotation + Math.PI) % pi2;
-
-        if (radian < 0) radian += pi2;
-
-        return radian - Math.PI;
-    }
-
-
-    minimumLookAtBounds(spot, params) {
-
-        const yawDiff = spot.yaw - params.yaw;
-        const pitchDiff = spot.pitch - params.pitch;
-        const lookAtUpperBound = yawDiff < this.openPopupRadianThreshhold && pitchDiff < this.openPopupRadianThreshhold;
-        const lookAtLowerBound = yawDiff > -this.openPopupRadianThreshhold && pitchDiff > -this.openPopupRadianThreshhold;
-
-        return { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound };
-    }
-
-
-    minimumLookAwayBounds(spot, params) {
-
-        // Gotta normalise the yaw diff a bit
-        const yawDiff = this.clampOverflowRotation(spot.yaw - params.yaw);
-
-        // > < is flipped from the {lookAt} bounds
-        // we're trying to get FURTHER AWAY to close, not CLOSE ENOUGH to open
-        const lookAwayMinimumUpperBound = yawDiff > this.closePopupHorizontalRadianThreshholdPerColumn * spot.columns;
-        const lookAwayMinimumLowerBound = yawDiff < -this.closePopupHorizontalRadianThreshholdPerColumn * spot.columns;
-
-        return { yawDiff, lookAwayMinimumUpperBound, lookAwayMinimumLowerBound };
-    }
-
-
-    // By using prototype.call() {this} will be the normal class scope and have access to class variables.
-    computeLookDirection(rotation, currentScene, currentView) {
-
-        // pitch, roll and yaw in radians
-        const params = currentView.parameters();
-
-        // Nothing selected or currently selecting. Go find a hotspot
-        if (!this.currentHotspotCandidate && !this.openedHotspot) {
-            // Haven't found and opened a hotspot yet.
-            // Lets go looking for one.
-            let hotspots = this.currentData.vrCollisionData;
-
-            // Loops the hotspots, look for one with a close enough pitch and yaw, select that as the candidate
-            for (let i = 0; i < hotspots.length; i++) {
-
-                if (this.currentHotspotCandidate) {
-                    continue;
-                }
-
-                const spot = hotspots[i];
-                // compute a rotation difference
-                const { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound } = this.minimumLookAtBounds(spot, params);
-
-                // If that difference is within a tolerance then interact with the element.
-                if (lookAtUpperBound && lookAtLowerBound) {
-
-                    this.currentHotspotCandidate = spot;
-
-                    // Have we begun looking at any hotspot yet?
-                    if (!this.viewingTimeoutID) {
-
-                        this.setTimerClass(true);
-
-                        this.viewingTimeoutID = setTimeout(() => {
-
-                            const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(this.currentContainers, this.currentHotspotCandidate.target);
-                            const leftElement = leftHotspot.domElement();
-
-                            this.setTimerClass(false);
-                            this.viewingTimeoutID = null;
-
-                            // this.currentHotspotCandidate = null;
-
-                            // Is it an link or info hotspot?
-                            if (leftElement.dataset.hotspot_target.includes('scene')) {
-                                this.openedHotspot = null;
-                                this.clickLinkHotspot(leftElement);
-                            }
-                            else {
-                                this.openedHotspot = spot;
-                                this.clickInfoHotspot(leftElement);
-                            }
-                        }, this.lookTriggerThreshold);
-                    }
-                }
-            }
-
-        }
-        // We have a candidate and we're currently counting down. Check for look away during this time.
-        else if (this.currentHotspotCandidate && !this.openedHotspot) {
-
-            const spot = this.currentHotspotCandidate;
-
-            // compute a rotation difference
-            const { yawDiff, pitchDiff, lookAtUpperBound, lookAtLowerBound } = this.minimumLookAtBounds(spot, params);
-
-            // Are we now looking away from the candidate?
-            if (!lookAtUpperBound || !lookAtLowerBound) {
-                clearTimeout(this.viewingTimeoutID);
-                // The clearTiemout function doesn't reset the variable to something safe.
-                this.viewingTimeoutID = null;
-                this.openedHotspot = null;
-                this.currentHotspotCandidate = null;
-                this.setTimerClass(false);
-                return;
-            }
-        }
-        // A hotspot has been opened, now start trying to close it.
-        else if (this.openedHotspot) {
-
-            const spot = this.openedHotspot;
-
-            const { yawDiff, lookAwayMinimumUpperBound, lookAwayMinimumLowerBound } = this.minimumLookAwayBounds(spot, params);
-
-            if (lookAwayMinimumLowerBound || lookAwayMinimumUpperBound) {
-
-                const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(this.currentContainers, spot.target);
-                const leftElement = leftHotspot.domElement();
-
-                this.clickInfoHotspot(leftElement);
-                // Reset various cached variables
-                clearTimeout(this.viewingTimeoutID);
-                this.viewingTimeoutID = null;
-                this.openedHotspot = null;
-            }
-        }
-    }
-
-    getHotspotsFromHotspotTarget(containers, target) {
-
-        const hotspots = [...containers[0].listHotspots()];
-
-        for (let i = 0; i < hotspots.length; i++) {
-            const d = hotspots[i].domElement();
-
-            if (d.dataset.hotspot_target == target) {
-                const left = hotspots[i];
-                const right = containers[1].listHotspots()[i];
-                return { leftHotspot: left, rightHotspot: right };
-            }
-        }
-
-        // Throw an error, don't catch it. This is a crashing error.
-        console.error('no hotspot found?');
-    }
+    // Throw an error, don't catch it. This is a crashing error.
+    console.error('no hotspot found?');
+  }
 
 }
 
-},{"./DeviceOrientationStrategy":119,"./MarzipanoViewer":120}],122:[function(require,module,exports){
+},{"./DeviceOrientationStrategy":120,"./MarzipanoViewer":121}],123:[function(require,module,exports){
+
+/**
+ * init func
+ */
+
+
+
 module.exports = {
+  MarzipanoViewer: require('./MarzipanoViewer'),
+  DekstopViewer: require('./DesktopViewer'),
+  VRViewer: require('./VRViewer'),
 
-    MarzipanoViewer: require('./MarzipanoViewer'),
-    DekstopViewer: require('./DesktopViewer'),
-    VRViewer: require('./VRViewer')
+  utils: {
+
+  }
 }
-},{"./DesktopViewer":118,"./MarzipanoViewer":120,"./VRViewer":121}]},{},[122])
+},{"./DesktopViewer":119,"./MarzipanoViewer":121,"./VRViewer":122}],124:[function(require,module,exports){
+const Marzipano = require('marzipano');
 
-//# sourceMappingURL=bundle.js.map
+/**
+ * 
+ * @param {string} id 
+ * @returns Marzipano.ImageUrlSource
+ */
+function tiledImageSource(id) {
+
+    const urlPrefix = 'tiles/' + id;
+    const source = Marzipano.ImageUrlSource.fromString(
+        urlPrefix + '/{z}/{f}/{y}/{x}.jpg',
+        { cubeMapPreviewUrl: urlPrefix + '/preview.jpg' });
+
+    return source;
+}
+
+module.export = tiledImageSource;
+},{"marzipano":57}]},{},[1]);

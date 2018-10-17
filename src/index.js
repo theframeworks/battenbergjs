@@ -1,7 +1,16 @@
-module.exports = init = () => {
-    return {
-        MarzipanoViewer: require('./MarzipanoViewer'),
-        DekstopViewer: require('./DesktopViewer'),
-        VRViewer: require('./VRViewer')
-    }
+
+/**
+ * init func
+ */
+
+
+
+module.exports = {
+  MarzipanoViewer: require('./MarzipanoViewer'),
+  DekstopViewer: require('./DesktopViewer'),
+  VRViewer: require('./VRViewer'),
+
+  utils: {
+
+  }
 }

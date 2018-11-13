@@ -1,7 +1,7 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
 const DeviceOrientationStrategy = require('./DeviceOrientationStrategy');
 const { deg2rad, clampOverflowRotation } = require('./utils');
-
+console.log(DeviceOrientationStrategy);
 
 module.exports = class VRViewer extends MarzipanoViewer {
 
@@ -14,10 +14,8 @@ module.exports = class VRViewer extends MarzipanoViewer {
     this.currentHotspotCandidate = null;
 
     this.openedHotspot = null;
-    this.previousFrameRotation = { yaw: 0, pitch: 0, roll: 0 };
 
-    // For altering the initial direction based upon previous scene
-    this.sceneEntryViewDirection = null;
+    console.log(this.DeviceOrientationStrategy);
 
     this.lookTriggerThreshold = 1.5 * 1000;
     this.openPopupRadianThreshhold = deg2rad(5);
@@ -26,7 +24,6 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
     this.orientationMethodID = 'deviceOrientation';
 
-    this.deviceOrientationControlFunction = DeviceOrientationStrategy;
     this.deviceOrientationController;
 
     const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
@@ -102,8 +99,6 @@ module.exports = class VRViewer extends MarzipanoViewer {
       // Hide all containers at first.
       hotspotContainer.hide();
       containers.push(hotspotContainer);
-      // Probably don't need to cache layers in a scene based implementation.
-      // scene.listLayers() gives you the layers but I'm too paranoid to leave it to chance at this point.
       layers.push(layer);
     });
 
@@ -117,7 +112,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
     const infoData = data.infoHotspots
       .filter(ih => Object.keys(ih).includes('hideInVR') === false)
-      // We don't want collisions with hotspot 0
+      // We don't want collisions with hotspot 0 (the tutorial)
       .filter(ih => ih.id !== '0')
       .map(ih => { return { yaw: ih.yaw, pitch: ih.pitch, target: ih.id, columns: ih.columns || 1 }; });
 
@@ -135,7 +130,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
   showHotspotZero(containers) {
 
-    const { leftHotspot, rightHotspot } = this.getHotspotsFromHotspotTarget(containers, '0');
+    const { leftHotspot } = this.getHotspotsFromHotspotTarget(containers, '0');
     const leftElement = leftHotspot.domElement();
     this.clickInfoHotspot(leftElement);
 
@@ -179,8 +174,8 @@ module.exports = class VRViewer extends MarzipanoViewer {
   // Could pass in the deviceOrientationControlFunction
   setupGyroControls(groupedSceneData) {
 
-    this.Marzipano.dependencies.eventEmitter(this.deviceOrientationControlFunction);
-    this.deviceOrientationController = new this.deviceOrientationControlFunction();
+    this.deviceOrientationController = new DeviceOrientationStrategy(this.Marzipano);
+    this.Marzipano.dependencies.eventEmitter(DeviceOrientationStrategy);
     // Register the custom control method.  
     const instantEnable = true;
     this.viewer.controls().registerMethod(this.orientationMethodID, this.deviceOrientationController, instantEnable);

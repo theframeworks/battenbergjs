@@ -1,13 +1,11 @@
-
-
 module.exports = {
-  MarzipanoViewer: require('./MarzipanoViewer'),
-  DekstopViewer: require('./DesktopViewer'),
-  VRViewer: require('./VRViewer'),
+    MarzipanoViewer: require('./MarzipanoViewer'),
+    DesktopViewer: require('./DesktopViewer'),
+    VRViewer: require('./VRViewer'),
 
-  Marzipano: require('marzipano'),
+    Marzipano: require('marzipano'),
 
-  utils: {
+    utils: require('./utils'),
 
-  }
-}
+    version: '1.0.0'
+};

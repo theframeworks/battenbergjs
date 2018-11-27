@@ -1,3 +1,5 @@
+// @ts-check
+
 const Marzipano = require('marzipano');
 const { tiledImageSource, isBelievedDesktop, rad2deg, deg2rad, findSceneById, findSceneDataById } = require('./utils');
 
@@ -7,7 +9,17 @@ module.exports = class MarzipanoViewer {
      * 
      * @param {string} environment 
      * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-     * @param {{ scene_data: {}, image_source: string} } configData
+     * @param {{ 
+     * scene_data: { 
+     * scenes: [], 
+     * name: string, 
+     * settings: {}, 
+     * cubeGeometryLevels: [], 
+     * fov: {}, 
+     * faceSize: number,
+     * debug: boolean}, 
+     * image_source: string
+     * } } configData
      */
     constructor(environment, panoElement, configData) {
 
@@ -18,10 +30,12 @@ module.exports = class MarzipanoViewer {
 
 
         this.Marzipano = Marzipano;
+
         this.sceneData = configData.scene_data;
         this.imageDir = configData.image_source;
+        this.debugging = configData.debug || false;
 
-        this.believedDesktop = isBelievedDesktop(environment);
+        this.believedDesktop = isBelievedDesktop();
 
         // Viewer options. Choices here: http://www.marzipano.net/reference/global.html#registerDefaultControls
         let viewerOpts = {
@@ -46,7 +60,7 @@ module.exports = class MarzipanoViewer {
     setupSceneBehaviour(sceneCreator) {
 
         // Create scenes using the provided data json
-        this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
+        this.scenes = this.createScenesFromData(this.sceneData.scenes, sceneCreator, this.viewer);
 
         this.cacheSceneVariables(this.scenes[this.initialScene]);
 

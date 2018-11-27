@@ -1,5 +1,7 @@
+// @ts-check
+
 const MarzipanoViewer = require('./MarzipanoViewer');
-const { tiledImageSource, isBelievedDesktop, deg2rad, rad2deg, findSceneById, findSceneDataById } = require('./utils');
+const { deg2rad } = require('./utils');
 
 
 
@@ -8,19 +10,25 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
     /**
     * 
     * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-    * @param {{ scene_data: {}, image_source: string} } configData
+    * @param {{ 
+     * scene_data: { 
+     * scenes: [], 
+     * name: string, 
+     * settings: {}, 
+     * cubeGeometryLevels: [], 
+     * fov: {}, 
+     * faceSize: number,
+     * debug?: boolean }, 
+     * image_source: string
+     * } } configData
     */
     constructor(panoElement, configData) {
         super('desktop', panoElement, configData);
 
-        this.autorotateData;
         this.firstLoad = true;
 
+        const groupedSceneData = this.setupSceneBehaviour(this.createScene);
 
-        this.autorotateToggleElement = document.querySelector('#autorotateToggle');
-        this.sceneNameElement = document.querySelector('#titleBar .sceneName');
-
-        const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
         this.switchScene(groupedSceneData[this.initialScene]);
     }

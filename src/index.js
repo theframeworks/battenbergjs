@@ -3,9 +3,9 @@ module.exports = {
     DesktopViewer: require('./DesktopViewer'),
     VRViewer: require('./VRViewer'),
 
-    Marzipano: require('marzipano'),
-
+    events: require('./events'),
     utils: require('./utils'),
 
+    Marzipano: require('marzipano'),
     version: '1.0.0'
 };

@@ -67,7 +67,6 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         // Create info hotspots.
         data.infoHotspots.forEach((hotspot) => {
             let element = super.createInfoHotspotElement(hotspot);
-
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
         });
 

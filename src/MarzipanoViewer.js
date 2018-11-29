@@ -51,6 +51,7 @@ module.exports = class MarzipanoViewer {
         // Initialize viewer.
         this.viewer = new this.Marzipano.Viewer(this.panoElement, viewerOpts);
 
+
         this.currentScene = null;
         this.defaultView = null;
         this.currentData = {};
@@ -62,7 +63,7 @@ module.exports = class MarzipanoViewer {
     setupSceneBehaviour(sceneCreator) {
 
         // Create scenes using the provided data json
-        this.scenes = this.createScenesFromData(this.sceneData.scenes, sceneCreator, this.viewer);
+        this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
 
         this.cacheSceneVariables(this.scenes[this.initialScene]);
 
@@ -196,23 +197,7 @@ module.exports = class MarzipanoViewer {
 
 
 
-        let toggle = (event) => {
-            let id = event.currentTarget.getAttribute('data-info-hotspot-id');
-
-            event.preventDefault();
-
-            document.querySelectorAll(`[data-info-hotspot-id="${id}"]`).forEach(function (element) {
-                element.classList.toggle('is-visible');
-
-                // reappending the open hotspot brings it on top of other hotspots
-                // playing with z-index wouldn't work as we are dealing with transformed elements
-                if (element.classList.contains('is-visible')) {
-                    document.querySelectorAll(`[data-info-hotspot-container-id="${id}"]`).forEach(function (element) {
-                        element.parentNode.appendChild(element);
-                    });
-                }
-            });
-        };
+        let toggle = this.toggleHotspotVisibility;
 
         // Show content when hotspot is clicked.
         wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
@@ -230,6 +215,28 @@ module.exports = class MarzipanoViewer {
         container.appendChild(wrapper);
 
         return container;
+    }
+
+    /**
+     * 
+     * @param {Event} event 
+     */
+    toggleHotspotVisibility(event) {
+        let id = event.currentTarget.getAttribute('data-info-hotspot-id');
+
+        event.preventDefault();
+
+        document.querySelectorAll(`[data-info-hotspot-id="${id}"]`).forEach(function (element) {
+            element.classList.toggle('is-visible');
+
+            // reappending the open hotspot brings it on top of other hotspots
+            // playing with z-index wouldn't work as we are dealing with transformed elements
+            if (element.classList.contains('is-visible')) {
+                document.querySelectorAll(`[data-info-hotspot-container-id="${id}"]`).forEach(function (element) {
+                    element.parentNode.appendChild(element);
+                });
+            }
+        });
     }
 
     // Prevent touch and scroll events from reaching the parent element.

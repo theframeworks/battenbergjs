@@ -1,6 +1,6 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
 const DeviceOrientationStrategy = require('./DeviceOrientationStrategy');
-const { deg2rad, clampOverflowRotation } = require('./utils');
+const { deg2rad, clampOverflowRotation, findSceneById } = require('./utils');
 
 module.exports = class VRViewer extends MarzipanoViewer {
 
@@ -94,8 +94,13 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
             // Create link hotspots.
             data.linkHotspots.forEach((hotspotData) => {
-                const element = super.createLinkHotspotElement.call(this, hotspotData, this.switchScene);
+                const element = super.createLinkHotspotElement(hotspotData);
                 element.dataset.hotspot_target = hotspotData.target;
+
+                // Add click event handler.
+                element.children[0].addEventListener('click', () => {
+                    this.currentScene = this.switchScene(findSceneById(hotspotData.target));
+                });
                 hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
             });
 
@@ -104,7 +109,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
                 if (hotspotData.hideInVR) {
                     return; // We're in a .forEach function so we return instead of continue
                 }
-                const element = super.createInfoHotspotElement.call(this, hotspotData, layer);
+                const element = super.createInfoHotspotElement(hotspotData);
                 element.dataset.hotspot_target = hotspotData.id;
                 hotspotContainer.createHotspot(element, { yaw: hotspotData.yaw, pitch: hotspotData.pitch });
             });
@@ -174,6 +179,8 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
         // overrides the this.currentXYZ variables. 
         // I need those variables intact for altering the intial view params though. So do this after.
+        // I question the need for .call though??? Is it needed.
+
         this.cacheSceneVariables.call(this, scene);
 
         scene.scene.switchTo({}, () => {
@@ -219,12 +226,18 @@ module.exports = class VRViewer extends MarzipanoViewer {
         this.panoElement.classList.toggle('is-opening', on);
     }
 
-
+    /**
+     * 
+     * @param {Element} element 
+     */
     clickInfoHotspot(element) {
         element.querySelector('.info-hotspot-header').click();
     }
 
-
+    /**
+    * 
+    * @param {Element} element 
+    */
     clickLinkHotspot(element) {
         element.querySelector('.link-hotspot').click();
     }

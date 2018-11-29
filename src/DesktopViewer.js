@@ -1,7 +1,7 @@
 // @ts-check
 
 const MarzipanoViewer = require('./MarzipanoViewer');
-const { deg2rad } = require('./utils');
+const { deg2rad, findSceneById } = require('./utils');
 
 
 
@@ -56,13 +56,20 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         // Create link hotspots.
         data.linkHotspots.forEach((hotspot) => {
-            let element = super.createLinkHotspotElement.call(this, hotspot, this.switchScene);
+            let element = super.createLinkHotspotElement(hotspot, this.switchScene);
+
+            // Add click event handler.
+            element.children[0].addEventListener('click', () => {
+                this.currentScene = this.switchScene(findSceneById(hotspot.target));
+            });
+
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
         });
 
         // Create info hotspots.
         data.infoHotspots.forEach((hotspot) => {
-            let element = super.createInfoHotspotElement(hotspot, this.panoElement);
+            let element = super.createInfoHotspotElement(hotspot);
+
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
         });
 
@@ -82,6 +89,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         // overrides the this.currentXYZ variables.
         // I need those variables intact for altering the intial view params though. So do this after.
+        // I question the need for .call though??? Is it needed.
         this.cacheSceneVariables.call(this, scene);
         scene.scene.switchTo();
     }

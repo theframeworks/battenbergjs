@@ -132,10 +132,6 @@ module.exports = class MarzipanoViewer {
         icon.src = this.iconDir;
         icon.classList.add('link-hotspot-icon');
 
-        // Add click event handler.
-        wrapper.addEventListener('click', () => {
-            this.currentScene = switchScene.call(this, findSceneById(hotspot.target));
-        });
 
         // Prevent touch and scroll events from reaching the parent element.
         // This prevents the view control logic from interfering with the hotspot.
@@ -277,6 +273,12 @@ module.exports = class MarzipanoViewer {
     }
 
 
+    /**
+     * Should probably make from and to just a string, not the whole scene data object
+     * @param {{ id: string }} from 
+     * @param {{ id: string }} to 
+     * @returns {{ 'scene_name': { pitch: number, yaw: number }}}
+     */
     getTransitionRotation(from, to) {
 
         return this.rotationMaps.from[from.id].to[to.id];

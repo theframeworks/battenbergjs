@@ -1,7 +1,7 @@
 // @ts-check
 
 const Marzipano = require('marzipano');
-const { tiledImageSource, isBelievedDesktop, rad2deg, deg2rad, findSceneById, findSceneDataById } = require('./utils');
+const { tiledImageSource, isBelievedDesktop } = require('./utils');
 
 module.exports = class MarzipanoViewer {
 
@@ -18,7 +18,8 @@ module.exports = class MarzipanoViewer {
      * fov: {}, 
      * faceSize: number,
      * debug: boolean}, 
-     * image_source: string
+     * tile_image_source: string,
+     * icon_image_source: string
      * } } configData
      */
     constructor(environment, panoElement, configData) {
@@ -32,7 +33,8 @@ module.exports = class MarzipanoViewer {
         this.Marzipano = Marzipano;
 
         this.sceneData = configData.scene_data;
-        this.imageDir = configData.image_source;
+        this.imageDir = configData.tile_image_source;
+        this.iconDir = configData.icon_image_source;
         this.debugging = configData.debug || false;
 
         this.believedDesktop = isBelievedDesktop();
@@ -72,7 +74,7 @@ module.exports = class MarzipanoViewer {
     /**
      * 
      * @param {[]} _data 
-     * @param {() => {}} sceneCreator 
+     * @param {() => {}} createScene 
      */
     createScenesFromData(_data, createScene, viewer) {
 
@@ -113,7 +115,12 @@ module.exports = class MarzipanoViewer {
     }
 
 
-    createLinkHotspotElement(hotspot, switchScene) {
+    /**
+     * 
+     * @param {*} data 
+     * @returns {HTMLDivElement}
+     */
+    createLinkHotspotElement(data) {
 
         // Create wrapper element to hold icon and tooltip.
         let wrapper = document.createElement('div');
@@ -122,7 +129,7 @@ module.exports = class MarzipanoViewer {
 
         // Create image element.
         let icon = document.createElement('img');
-        icon.src = 'icons/link.svg';
+        icon.src = this.iconDir;
         icon.classList.add('link-hotspot-icon');
 
         // Add click event handler.
@@ -149,10 +156,10 @@ module.exports = class MarzipanoViewer {
     }
 
 
-    createInfoHotspotElement(hotspot) {
+    createInfoHotspotElement(data) {
 
         let container = document.createElement('div');
-        container.setAttribute('data-info-hotspot-container-id', hotspot.id);
+        container.setAttribute('data-info-hotspot-container-id', data.id);
 
         // Create wrapper element to hold icon and tooltip.
         let wrapper = document.createElement('div');
@@ -162,7 +169,7 @@ module.exports = class MarzipanoViewer {
         // Create hotspot/tooltip header.
         let header = document.createElement('div');
         header.classList.add('info-hotspot-header');
-        header.setAttribute('data-info-hotspot-id', hotspot.id);
+        header.setAttribute('data-info-hotspot-id', data.id);
 
         // Create image element for the little icon.
         let iconWrapper = document.createElement('div');
@@ -174,14 +181,14 @@ module.exports = class MarzipanoViewer {
         // Add content to the content container
         let content = document.createElement('div');
         content.classList.add('info-hotspot-content');
-        content.setAttribute('data-info-hotspot-id', hotspot.id);
+        content.setAttribute('data-info-hotspot-id', data.id);
 
-        let hotspotElem = document.getElementById(`hotspot-${hotspot.id}`);
+        let hotspotElem = document.getElementById(`hotspot-${data.id}`);
         if (hotspotElem) {
             content.appendChild(hotspotElem.cloneNode(true));
         }
 
-        if (hotspot.hideInMobile) {
+        if (data.hideInMobile) {
             wrapper.classList.add('is-hidden-inline');
             content.classList.add('is-hidden-inline');
         }
@@ -216,7 +223,7 @@ module.exports = class MarzipanoViewer {
 
         let closeIcon = content.querySelector('[data-hotspot-close]');
         if (closeIcon) {
-            closeIcon.setAttribute('data-info-hotspot-id', hotspot.id);
+            closeIcon.setAttribute('data-info-hotspot-id', data.id);
             closeIcon.addEventListener('click', toggle);
         }
 

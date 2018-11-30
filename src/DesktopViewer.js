@@ -18,8 +18,9 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
      * cubeGeometryLevels: [], 
      * fov: {}, 
      * faceSize: number,
-     * debug?: boolean }, 
-     * image_source: string
+     * debug: boolean}, 
+     * tile_image_source: string,
+     * icon_image_source: string
      * } } configData
     */
     constructor(panoElement, configData) {
@@ -32,6 +33,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         this.switchScene(groupedSceneData[this.initialScene]);
     }
+
 
     createScene(viewer, source, geometry, data) {
 
@@ -51,6 +53,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         });
 
         const hotspotContainer = scene.hotspotContainer();
+
         // Create link hotspots.
         data.linkHotspots.forEach((hotspot) => {
             let element = super.createLinkHotspotElement.call(this, hotspot, this.switchScene);

@@ -65,7 +65,7 @@ module.exports = class MarzipanoViewer {
         // Create scenes using the provided data json
         this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
 
-        this.cacheSceneVariables(this.scenes[this.initialScene]);
+
 
         return this.scenes;
     }
@@ -105,15 +105,7 @@ module.exports = class MarzipanoViewer {
     }
 
 
-    cacheSceneVariables(scene) {
 
-        // Doubt I'll need this. Could prove useful for some layer manipulation though?
-        this.currentView = scene.view;
-        this.currentScene = scene.scene;
-        this.currentContainers = scene.containers;
-        this.currentData = scene.data;
-        this.currentLayers = scene.layers;
-    }
 
 
     /**

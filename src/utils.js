@@ -49,14 +49,14 @@ module.exports.isBelievedDesktop = () => {
 
 module.exports.findSceneById = (scenes, id) => {
     for (let i = 0; i < scenes.length; i++) {
-        const sceneID = scenes[i].data.id;
-        if (sceneID === id) {
+        if (scenes[i].data.id === id) {
             return scenes[i];
         }
     }
     return null;
 }
 
+// Needed?
 module.exports.findSceneDataById = (id) => {
     for (let i = 0; i < this.sceneData.scenes.length; i++) {
         if (this.sceneData.scenes[i].id === id) {

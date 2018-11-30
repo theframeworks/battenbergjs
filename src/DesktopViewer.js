@@ -26,18 +26,20 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         super('desktop', panoElement, configData);
 
 
-        const groupedSceneData = this.setupSceneBehaviour(this.createScene);
+        // const groupedSceneData = this.setupSceneBehaviour(this.createScene);
+
+        this.scenes = this.createScenesFromData(this.sceneData.scenes, this.createScene, this.viewer);
 
         this.panoElement.addEventListener(Events.sceneWillChange, this.switchScene);
 
         // Replace with a call to cachescenevariables, then use this.etc;
-        const firstScene = groupedSceneData[this.initialScene];
+        const firstScene = this.scenes[this.initialScene];
 
         console.log(firstScene);
 
         firstScene.view.setParameters(firstScene.data.initialViewParameters);
 
-        this.cacheSceneVariables(firstScene);
+        this.currentCache = firstScene;
         firstScene.scene.switchTo();
 
         this.firstLoad = false;
@@ -45,6 +47,8 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         // Broadcast sceneDidChange event
         const sceneDidChangeEvent = new CustomEvent(Events.sceneDidChange, { detail: null });
         this.panoElement.dispatchEvent(sceneDidChangeEvent);
+
+        console.log(this.currentCache);
     }
 
 
@@ -73,9 +77,16 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
             // Add click event handler.
             element.children[0].addEventListener('click', () => {
-                // this.currentScene = this.switchScene(findSceneById(hotspot.target));
+
                 console.log('firing event!');
-                const sceneWillChangeEvent = new CustomEvent(Events.sceneWillChange, { detail: findSceneById(this.sceneData.scenes, hotspot.target) });
+                console.log(this.currentCache);
+
+                const eventArgs = {
+                    detail: {
+                        scene: findSceneById(this.scenes, hotspot.target)
+                    }
+                };
+                const sceneWillChangeEvent = new CustomEvent(Events.sceneWillChange, eventArgs);
                 this.panoElement.dispatchEvent(sceneWillChangeEvent);
             });
 
@@ -93,26 +104,32 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
     /**
      * 
-     * @param { Event } event
+     * @param { CustomEvent } event
      */
     switchScene(event) {
 
         const nextScene = event.detail;
         console.log(nextScene);
+        console.log(this.currentCache);
 
-        const alteredViewParams = this.firstLoad ?
-            nextScene.data.initialViewParameters :
-            this.getTransitionRotation(this.currentData.id, nextScene.data.id);
-
-        this.firstLoad = false;
+        const alteredViewParams = this.getTransitionRotation(this.currentCache.data.id, nextScene.data.id);
 
         nextScene.view.setParameters(alteredViewParams);
 
         // overrides the this.currentXYZ variables.
         // I need those variables intact for altering the intial view params though. So do this after.
         // I question the need for .call though??? Is it needed.
-        this.cacheSceneVariables.call(this, nextScene);
+        this.currentCache = nextScene;
         nextScene.scene.switchTo();
     }
 
+    // cacheSceneVariables(scene) {
+    //     console.log(scene);
+    //     // Doubt I'll need this. Could prove useful for some layer manipulation though?
+    //     this.currentView = scene.view;
+    //     this.currentScene = scene.scene;
+    //     this.currentContainers = scene.containers;
+    //     this.currentData = scene.data;
+    //     this.currentLayers = scene.layers;
+    // }
 }

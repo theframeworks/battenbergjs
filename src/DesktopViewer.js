@@ -2,6 +2,7 @@
 
 const MarzipanoViewer = require('./MarzipanoViewer');
 const { deg2rad, findSceneById } = require('./utils');
+const Events = require('./events');
 
 module.exports = class DesktopViewer extends MarzipanoViewer {
 
@@ -24,19 +25,32 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
     constructor(panoElement, configData) {
         super('desktop', panoElement, configData);
 
-        this.firstLoad = true;
 
         const groupedSceneData = this.setupSceneBehaviour(this.createScene);
 
         this.panoElement.addEventListener(Events.sceneWillChange, this.switchScene);
 
-        this.switchScene(groupedSceneData[this.initialScene]);
+        // Replace with a call to cachescenevariables, then use this.etc;
+        const firstScene = groupedSceneData[this.initialScene];
+
+        console.log(firstScene);
+
+        firstScene.view.setParameters(firstScene.data.initialViewParameters);
+
+        this.cacheSceneVariables(firstScene);
+        firstScene.scene.switchTo();
+
+        this.firstLoad = false;
+
+        // Broadcast sceneDidChange event
+        const sceneDidChangeEvent = new CustomEvent(Events.sceneDidChange, { detail: null });
+        this.panoElement.dispatchEvent(sceneDidChangeEvent);
     }
 
 
     createScene(viewer, source, geometry, data) {
 
-        // [3] Create the "eyes" or view.
+        // Create the "eyes" or view.
         let limiter = this.Marzipano.RectilinearView.limit.traditional(
             this.sceneData.faceSize,
             deg2rad(100),
@@ -77,22 +91,28 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         return { scene, view, data };
     }
 
-    switchScene(scene) {
+    /**
+     * 
+     * @param { Event } event
+     */
+    switchScene(event) {
 
+        const nextScene = event.detail;
+        console.log(nextScene);
 
         const alteredViewParams = this.firstLoad ?
-            scene.data.initialViewParameters :
-            this.getTransitionRotation(this.currentData, scene.data);
+            nextScene.data.initialViewParameters :
+            this.getTransitionRotation(this.currentData.id, nextScene.data.id);
 
         this.firstLoad = false;
 
-        scene.view.setParameters(alteredViewParams);
+        nextScene.view.setParameters(alteredViewParams);
 
         // overrides the this.currentXYZ variables.
         // I need those variables intact for altering the intial view params though. So do this after.
         // I question the need for .call though??? Is it needed.
-        this.cacheSceneVariables.call(this, scene);
-        scene.scene.switchTo();
+        this.cacheSceneVariables.call(this, nextScene);
+        nextScene.scene.switchTo();
     }
 
 }

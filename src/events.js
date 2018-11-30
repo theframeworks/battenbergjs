@@ -1,4 +1,6 @@
 module.exports = {
 
-    sceneWillChange: 'sceneWillChange'
-}
+    didFinishSetup: '',
+    sceneWillChange: 'sceneWillChange',
+    sceneDidChange: 'sceneDidChange',
+};

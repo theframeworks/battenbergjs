@@ -107,7 +107,7 @@ module.exports = class MarzipanoViewer {
 
     cacheSceneVariables(scene) {
 
-        // // Doubt I'll need this. Could prove useful for some layer manipulation though?
+        // Doubt I'll need this. Could prove useful for some layer manipulation though?
         this.currentView = scene.view;
         this.currentScene = scene.scene;
         this.currentContainers = scene.containers;
@@ -118,10 +118,9 @@ module.exports = class MarzipanoViewer {
 
     /**
      * 
-     * @param {*} data 
      * @returns {HTMLDivElement}
      */
-    createLinkHotspotElement(data) {
+    createLinkHotspotElement() {
 
         // Create wrapper element to hold icon and tooltip.
         let wrapper = document.createElement('div');
@@ -282,13 +281,13 @@ module.exports = class MarzipanoViewer {
 
     /**
      * Should probably make from and to just a string, not the whole scene data object
-     * @param {{ id: string }} from 
-     * @param {{ id: string }} to 
+     * @param { string } from 
+     * @param {string } to 
      * @returns {{ 'scene_name': { pitch: number, yaw: number }}}
      */
     getTransitionRotation(from, to) {
 
-        return this.rotationMaps.from[from.id].to[to.id];
+        return this.rotationMaps.from[from].to[to];
     }
 
     // Could maybe be made into a file imported in the browser. Oh well.

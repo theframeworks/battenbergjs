@@ -28,6 +28,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         const groupedSceneData = this.setupSceneBehaviour(this.createScene);
 
+        this.panoElement.addEventListener(Events.sceneWillChange, this.switchScene);
 
         this.switchScene(groupedSceneData[this.initialScene]);
     }
@@ -54,11 +55,14 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         // Create link hotspots.
         data.linkHotspots.forEach((hotspot) => {
-            let element = super.createLinkHotspotElement(hotspot, this.switchScene);
+            let element = super.createLinkHotspotElement();
 
             // Add click event handler.
             element.children[0].addEventListener('click', () => {
-                this.currentScene = this.switchScene(findSceneById(hotspot.target));
+                // this.currentScene = this.switchScene(findSceneById(hotspot.target));
+                console.log('firing event!');
+                const sceneWillChangeEvent = new CustomEvent(Events.sceneWillChange, { detail: findSceneById(this.sceneData.scenes, hotspot.target) });
+                this.panoElement.dispatchEvent(sceneWillChangeEvent);
             });
 
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });

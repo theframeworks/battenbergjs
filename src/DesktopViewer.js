@@ -3,8 +3,6 @@
 const MarzipanoViewer = require('./MarzipanoViewer');
 const { deg2rad, findSceneById } = require('./utils');
 
-
-
 module.exports = class DesktopViewer extends MarzipanoViewer {
 
     /**

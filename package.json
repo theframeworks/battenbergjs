@@ -4,7 +4,8 @@
     "description": "## Requirements",
     "main": "dist/index.js",
     "scripts": {
-        "serve": "node_modules/http-server/bin/http-server",
+        "demo:build": "rimraf demo/js/bundle.js && browserify demo/js/index.js --debug -o demo/js/bundle.js",
+        "demo:serve": "http-server ./demo",
         "prod": "npm run production --  ",
         "production": "node_modules/gulp/bin/gulp.js",
         "slice": "slice --file-dir --output-dir"
@@ -64,6 +65,7 @@
         "lr-http-server": "^0.1.5",
         "mocha": "^3.0.1",
         "proclaim": "^3.4.0",
+        "rimraf": "^2.6.2",
         "sinon": "^1.17.3",
         "testem": "^1.1.3",
         "tfs-website-scraper": "^0.3.0",

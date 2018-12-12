@@ -105,7 +105,15 @@ module.exports = class MarzipanoViewer {
     }
 
 
+    cacheSceneVariables(scene) {
 
+        // Doubt I'll need this. Could prove useful for some layer manipulation though?
+        this.currentView = scene.view;
+        this.currentScene = scene.scene;
+        this.currentContainers = scene.containers;
+        this.currentData = scene.data;
+        this.currentLayers = scene.layers;
+    }
 
 
     /**

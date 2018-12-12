@@ -110,16 +110,15 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         const nextScene = event.detail;
         console.log(nextScene);
-        console.log(this.currentCache);
 
-        const alteredViewParams = this.getTransitionRotation(this.currentCache.data.id, nextScene.data.id);
+        const alteredViewParams = this.getTransitionRotation(this.currentData.id, nextScene.data.id);
 
         nextScene.view.setParameters(alteredViewParams);
 
         // overrides the this.currentXYZ variables.
         // I need those variables intact for altering the intial view params though. So do this after.
         // I question the need for .call though??? Is it needed.
-        this.currentCache = nextScene;
+        this.cacheSceneVariables.call(this, nextScene);
         nextScene.scene.switchTo();
     }
 

@@ -91,7 +91,7 @@ gulp.task('css', function () {
             mergeLonghand: false,
             zindex: false,
         }))
-        .pipe(csswrap({ selector: '#battenburg' }))
+        .pipe(csswrap({ selector: '#battenberg' }))
         .pipe(gulp.dest('./dist/css'));
 });
 
@@ -167,7 +167,7 @@ gulp.task('vr:js', function () {
             ignore: ['./lib/NoSleep.js'],
         }))
         .pipe(uglify())
-        .pipe(concat('battenburg.js'))
+        .pipe(concat('battenberg.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist/js'));
 });

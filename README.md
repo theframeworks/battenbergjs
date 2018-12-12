@@ -1,4 +1,4 @@
-# internal-site
+# Battenberg.js
 
 ## Requirements
 

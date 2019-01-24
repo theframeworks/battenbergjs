@@ -17,7 +17,9 @@ module.exports = class MarzipanoViewer {
      * cubeGeometryLevels: [], 
      * fov: {}, 
      * faceSize: number,
-     * debug: boolean}, 
+     * }, 
+     * debug: boolean
+     * initialScene: number
      * tile_image_source: string,
      * icon_image_source: string
      * } } configData
@@ -26,7 +28,7 @@ module.exports = class MarzipanoViewer {
 
         this.panoElement = panoElement;
         this.environment = this.prepareEnvironment(environment);
-        this.initialScene = 0;
+        this.initialScene = configData.initialScene || 0;
         this.rotationMaps = this.sceneTransitionRotationMapping();
 
 

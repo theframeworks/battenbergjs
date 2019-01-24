@@ -28,8 +28,10 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         firstScene.view.setParameters(firstScene.data.initialViewParameters);
 
-        this.currentCache = firstScene;
+
+        this.cacheSceneVariables(firstScene);
         firstScene.scene.switchTo();
+
 
         this.firstLoad = false;
 
@@ -37,7 +39,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         const sceneDidChangeEvent = new CustomEvent(Events.sceneDidChange, { detail: null });
         this.panoElement.dispatchEvent(sceneDidChangeEvent);
 
-        console.log(this.currentCache);
+        // console.log(this.currentCache);
     }
 
 
@@ -68,11 +70,11 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
             element.children[0].addEventListener('click', () => {
 
                 console.log('firing event!');
-                console.log(this.currentCache);
 
                 const eventArgs = {
                     detail: {
-                        scene: findSceneById(this.scenes, hotspot.target)
+                        currentScene: findSceneById(this.scenes, data.id),
+                        nextScene: findSceneById(this.scenes, hotspot.target)
                     }
                 };
                 const sceneWillChangeEvent = new CustomEvent(Events.sceneWillChange, eventArgs);
@@ -97,10 +99,11 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
      */
     switchScene(event) {
 
-        const nextScene = event.detail;
-        console.log(nextScene);
+        const currentScene = event.detail.currentScene;
+        const nextScene = event.detail.nextScene;
+        console.log(event.detail);
 
-        const alteredViewParams = this.getTransitionRotation(this.currentData.id, nextScene.data.id);
+        const alteredViewParams = this.getTransitionRotation(currentScene.data.id, nextScene.data.id);
 
         nextScene.view.setParameters(alteredViewParams);
 

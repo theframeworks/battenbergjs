@@ -6,29 +6,17 @@ const { tiledImageSource, isBelievedDesktop } = require('./utils');
 module.exports = class MarzipanoViewer {
 
     /**
-     * 
+     * @class Battenberg.MarzipanoViewer
+     * @memberof Battenberg
      * @param {string} environment 
      * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-     * @param {{ 
-     * scene_data: { 
-     * scenes: [], 
-     * name: string, 
-     * settings: {}, 
-     * cubeGeometryLevels: [], 
-     * fov: {}, 
-     * faceSize: number,
-     * }, 
-     * debug: boolean
-     * initialScene: number
-     * tile_image_source: string,
-     * icon_image_source: string
-     * } } configData
+     * @param { ConfigData } configData 
      */
     constructor(environment, panoElement, configData) {
 
         this.panoElement = panoElement;
         this.environment = this.prepareEnvironment(environment);
-        this.initialScene = configData.initialScene || 0;
+        this.initialScene = configData.initial_scene || 0;
         this.rotationMaps = this.sceneTransitionRotationMapping();
 
 

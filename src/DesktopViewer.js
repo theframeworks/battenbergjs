@@ -8,27 +8,16 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
     /**
     * 
-    * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-    * @param {{ 
-     * scene_data: { 
-     * scenes: [], 
-     * name: string, 
-     * settings: {}, 
-     * cubeGeometryLevels: [], 
-     * fov: {}, 
-     * faceSize: number,
-     * debug: boolean}, 
-     * tile_image_source: string,
-     * icon_image_source: string
-     * } } configData
+    * @class Battenberg.DesktopViewer
+    * @memberOf Battenberg  
+    * @param { Element } panoElement - Injected by the consumer with either the VR or Desktop panoElement
+    * @param { ConfigData } configData
     */
     constructor(panoElement, configData) {
         super('desktop', panoElement, configData);
 
 
-        // const groupedSceneData = this.setupSceneBehaviour(this.createScene);
-
-        this.scenes = this.createScenesFromData(this.sceneData.scenes, this.createScene, this.viewer);
+        this.scenes = this.createScenesFromData(configData.scene_data.scenes, this.createScene, this.viewer);
 
         this.panoElement.addEventListener(Events.sceneWillChange, this.switchScene);
 

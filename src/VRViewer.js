@@ -41,7 +41,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
         const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
-        this.setupGyroControls(groupedSceneData);
+        this.setupGyroControls();
 
         this.switchScene(groupedSceneData[this.initialScene]);
     }
@@ -190,9 +190,20 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
     }
 
+    debugLookDirectionSetup(groupedSceneData){
+
+        // For testing view direction on desktop only
+        // This is also useful if you want to know the yaw and pitch for placing desktop
+        groupedSceneData.forEach(gsd => {
+            gsd.view.addEventListener('change', () => {
+
+                this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
+            });
+        })
+    }
 
     // Could pass in the deviceOrientationControlFunction
-    setupGyroControls(groupedSceneData) {
+    setupGyroControls() {
 
         this.deviceOrientationController = new DeviceOrientationStrategy(this.Marzipano);
         this.Marzipano.dependencies.eventEmitter(DeviceOrientationStrategy);
@@ -205,15 +216,6 @@ module.exports = class VRViewer extends MarzipanoViewer {
             // if (this.switchingScenes) { return; }
             this.computeLookDirection.call(this, rotation, this.currentScene, this.currentView);
         });
-
-        // For testing view direction on desktop only
-        // This is also useful if you want to know the yaw and pitch for placing desktop
-        // groupedSceneData.forEach(gsd => {
-        //     gsd.view.addEventListener('change', () => {
-
-        //         this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
-        //     });
-        // })
     }
 
 

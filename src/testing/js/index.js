@@ -1,6 +1,6 @@
-/// <reference path="../../src/testing/jquery-3.3.1.min.js" />
+/// <reference path="./jquery-3.3.1.min.js" />
 
-const bbjs = require('../../src');
+const bbjs = require('../../index');
 const data = require('./data.js');
 
 
@@ -8,11 +8,11 @@ var pano = document.getElementById('pano');
 var panoOriginal = pano.cloneNode();
 var landscapeMedia = window.matchMedia('(orientation: landscape)');
 
-
+let viewer;
 
 // return true on creation, false if instance already in use
 function handleInline() {
-    const bbdv = new bbjs.DesktopViewer(pano, {
+    viewer = new bbjs.DesktopViewer(pano, {
         scene_data: data,
         tile_image_source: '../images/tiles',
         icon_image_source: '../images/icons',
@@ -20,19 +20,21 @@ function handleInline() {
         debug: true
     });
 
+
     document.body.classList.add('no-scroll');
     pano.classList.add('is-active', 'is-inline');
-    debugAllThings(bbdv);
+    debugAllThings(viewer);
 }
 
-function debugAllThings(bbdv) {
+function debugAllThings(viewer) {
 
-    bbdv.viewer.scene().hotspotContainer().listHotspots();
+    const hotspots = viewer.viewer.scene().hotspotContainer().listHotspots();
 
+    console.log({ hotspots });
     // pano.style.display = 'block';
-    // console.log(bbdv.viewer.scene().hotspotContainer().listHotspots());
+    // console.log(viewer.viewer.scene().hotspotContainer().listHotspots());
 
-    // bbdv.viewer.scene().hotspotContainer().listHotspots()[0].domElement().click();
+    // viewer.viewer.scene().hotspotContainer().listHotspots()[0].domElement().click();
     // How to make my own events
     // let e = new CustomEvent('newevent', { detail: { message: 'hi' } });
 
@@ -45,6 +47,7 @@ function debugAllThings(bbdv) {
     // }, 3000);
 
 }
+
 
 function handleMobile() {
     if (pano.classList.contains('is-mobile')) {
@@ -108,6 +111,13 @@ function main() {
 
         closePano();
         pano.classList.remove('is-inline', 'is-mobile');
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.keyCode == 32) {
+            const links = viewer.viewer.scene().hotspotContainer().listHotspots();
+            links[0]._domElement.childNodes[0].click();
+        }
     });
 
     landscapeMedia.addListener(handleMobile);

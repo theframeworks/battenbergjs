@@ -6,6 +6,7 @@
     "scripts": {
         "demo:build": "rimraf demo/js/bundle.js && browserify demo/js/index.js --debug -o demo/js/bundle.js",
         "demo:serve": "http-server ./demo",
+        "serve": "http-server ./src/testing",
         "prod": "npm run production --  ",
         "production": "node_modules/gulp/bin/gulp.js",
         "slice": "slice --file-dir --output-dir"
@@ -17,6 +18,9 @@
     "author": "",
     "license": "ISC",
     "homepage": "https://bitbucket.org/tfsparkadmin/battenbergjs#readme",
+    "dependencies": {
+        "marzipano": "^0.7.2"
+    },
     "devDependencies": {
         "@babel/core": "^7.1.0",
         "@babel/preset-env": "^7.1.0",
@@ -74,8 +78,5 @@
         "vinyl-source-stream": "^2.0.0",
         "watchify": "^3.11.0",
         "yargs": "^12.0.2"
-    },
-    "dependencies": {
-        "marzipano": "^0.7.2"
     }
 }

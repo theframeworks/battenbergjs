@@ -39,15 +39,17 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
         this.deviceOrientationController;
 
+        this.scenes = this.createScenesFromData(this.sceneData.scenes, this.switchScene, this.viewer);
+
         const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
-        this.setupGyroControls(groupedSceneData);
+        this.setupGyroControls();
 
         this.switchScene(groupedSceneData[this.initialScene]);
     }
 
 
-    // Shared signature with DesktopViewer.createScene() but I don't use it all.
+    // Shared signature with DesktopViewer.createScene() but I don't use it all. Could lean on Duck Typing?
     // TODO: Maybe accept opts object.
     createScene(viewer, source, geometry, data) {
 
@@ -190,9 +192,20 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
     }
 
+    debugLookDirectionSetup(groupedSceneData) {
+
+        // For testing view direction on desktop only
+        // This is also useful if you want to know the yaw and pitch for placing desktop
+        groupedSceneData.forEach(gsd => {
+            gsd.view.addEventListener('change', () => {
+
+                this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
+            });
+        })
+    }
 
     // Could pass in the deviceOrientationControlFunction
-    setupGyroControls(groupedSceneData) {
+    setupGyroControls() {
 
         this.deviceOrientationController = new DeviceOrientationStrategy(this.Marzipano);
         this.Marzipano.dependencies.eventEmitter(DeviceOrientationStrategy);
@@ -205,20 +218,11 @@ module.exports = class VRViewer extends MarzipanoViewer {
             // if (this.switchingScenes) { return; }
             this.computeLookDirection.call(this, rotation, this.currentScene, this.currentView);
         });
-
-        // For testing view direction on desktop only
-        // This is also useful if you want to know the yaw and pitch for placing desktop
-        // groupedSceneData.forEach(gsd => {
-        //     gsd.view.addEventListener('change', () => {
-
-        //         this.computeLookDirection.call(this, null, this.currentScene, this.currentView);
-        //     });
-        // })
     }
 
 
     /**
-     * I worry that this isn't targetting the right elements....
+     * Set the opening animation on (true) or off (false)
      * 
      * @param {Boolean} on 
      */
@@ -227,6 +231,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
     }
 
     /**
+     * 
      * 
      * @param {Element} element 
      */

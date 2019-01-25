@@ -39,6 +39,8 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
         this.deviceOrientationController;
 
+        this.scenes = this.createScenesFromData(this.sceneData.scenes, this.switchScene, this.viewer);
+
         const groupedSceneData = this.setupSceneBehaviour(this.createScene, this.switchScene);
 
         this.setupGyroControls();

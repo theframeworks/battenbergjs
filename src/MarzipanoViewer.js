@@ -17,7 +17,9 @@ module.exports = class MarzipanoViewer {
         this.panoElement = panoElement;
         this.environment = this.prepareEnvironment(environment);
         this.initialScene = configData.initial_scene || 0;
-        this.rotationMaps = configData.scene_transition_rotation_mapping || defaultSceneTransitionRotationMapping();
+        this.defaultRotationMapping = defaultSceneTransitionRotationMapping();
+        this.rotationMaps = configData.scene_transition_rotation_mapping || this.defaultRotationMapping;
+
 
 
         this.Marzipano = Marzipano;
@@ -52,9 +54,8 @@ module.exports = class MarzipanoViewer {
 
 
     /**
-     * 
-     * @param {any[]} _data 
-     * @param {() => {}} createScene 
+     * @param {any[]} _data
+     * @param {Function} createScene
      */
     createScenesFromData(_data, createScene, viewer) {
 
@@ -67,10 +68,10 @@ module.exports = class MarzipanoViewer {
             // [2] Create the geometry
             let geometry = new this.Marzipano.CubeGeometry(this.sceneData.cubeGeometryLevels);
 
-            // TODO: Maybe move the groupedSceneData return object into it.
-            // Then desktop can return Scene and VR can return Stage. Does it even matter though?
             const { scene, view, containers, layers, data } = createScene.call(this, viewer, source, geometry, mData);
 
+            // Yes this is verbose, when we could store the createScene results directly into this variable. 
+            // But these values are prone to change and routinely debugged against.
             const groupedSceneData = {
                 data: data,
                 scene: scene,
@@ -86,16 +87,12 @@ module.exports = class MarzipanoViewer {
 
     cacheSceneVariables(scene) {
 
-        console.log('cached current scene')
-        console.log(scene)
         // Doubt I'll need this. Could prove useful for some layer manipulation though?
         this.currentView = scene.view;
         this.currentScene = scene.scene;
         this.currentContainers = scene.containers;
         this.currentData = scene.data;
         this.currentLayers = scene.layers;
-
-        console.log(this.currentData);
     }
 
 
@@ -240,15 +237,12 @@ module.exports = class MarzipanoViewer {
 
         if (window.matchMedia) {
             let setMode = function () {
-                // The viewport is, at most 
                 if (mql.matches) {
                     document.body.classList.remove('desktop');
                     document.body.classList.add('mobile');
-                    // document.body.innerHTML = 'mobile';
                 } else {
                     document.body.classList.remove('mobile');
                     document.body.classList.add('desktop');
-                    // document.body.innerHTML = 'desktop';
                 }
             };
             let mql = matchMedia('(max-width: 500px), (max-height: 500px)');
@@ -261,17 +255,22 @@ module.exports = class MarzipanoViewer {
         return env;
     }
 
-    // TODO: Provide a fallback for this functionality. We should accept an optional object matching the structure of 
 
     /**
-     * Should probably make from and to just a string, not the whole scene data object
      * @param { string } from 
      * @param {string } to 
-     * @returns {{ 'scene_name': { pitch: number, yaw: number }}}
+     * @returns {{ 'scene_name': { pitch: number, yaw: number }}} pitch and yaw 
      */
     getTransitionRotation(from, to) {
+        console.log({ mapping: this.rotationMaps, from, to })
+        if (this.useDefaultRotationMapping()) {
+            return this.rotationMaps;
+        }
 
         return this.rotationMaps.from[from].to[to];
     }
 
+    useDefaultRotationMapping() {
+        return this.rotationMaps === this.defaultRotationMapping;
+    }
 }

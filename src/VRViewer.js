@@ -49,7 +49,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
     }
 
 
-    // Shared signature with DesktopViewer.createScene() but I don't use it all.
+    // Shared signature with DesktopViewer.createScene() but I don't use it all. Could lean on Duck Typing?
     // TODO: Maybe accept opts object.
     createScene(viewer, source, geometry, data) {
 
@@ -192,7 +192,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
     }
 
-    debugLookDirectionSetup(groupedSceneData){
+    debugLookDirectionSetup(groupedSceneData) {
 
         // For testing view direction on desktop only
         // This is also useful if you want to know the yaw and pitch for placing desktop
@@ -222,7 +222,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
 
 
     /**
-     * I worry that this isn't targetting the right elements....
+     * Set the opening animation on (true) or off (false)
      * 
      * @param {Boolean} on 
      */
@@ -231,6 +231,7 @@ module.exports = class VRViewer extends MarzipanoViewer {
     }
 
     /**
+     * 
      * 
      * @param {Element} element 
      */

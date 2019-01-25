@@ -3,8 +3,6 @@
   */
 
 
-  // TODO: This is crying out for Typescript
-
   // TODO: Add a definition for the scene transition mapping option in ConfigData
 
 /**

@@ -19,27 +19,25 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
         this.scenes = this.createScenesFromData(configData.scene_data.scenes, this.createScene, this.viewer);
 
+        // Register some events
         this.panoElement.addEventListener(Events.sceneWillChange, this.switchScene);
 
         // Replace with a call to cachescenevariables, then use this.etc;
         const firstScene = this.scenes[this.initialScene];
 
-        console.log(firstScene);
+        this.cacheSceneVariables(firstScene);
 
         firstScene.view.setParameters(firstScene.data.initialViewParameters);
 
 
-        this.cacheSceneVariables(firstScene);
         firstScene.scene.switchTo();
-
-
-        this.firstLoad = false;
 
         // Broadcast sceneDidChange event
         const sceneDidChangeEvent = new CustomEvent(Events.sceneDidChange, { detail: null });
         this.panoElement.dispatchEvent(sceneDidChangeEvent);
 
-        // console.log(this.currentCache);
+        this.firstLoad = false;
+
     }
 
 
@@ -71,14 +69,19 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
 
                 console.log('firing event!');
 
+                // The data passed to the event handler function, it gets merged into the 1st event argument as event.detail
                 const eventArgs = {
                     detail: {
                         currentScene: findSceneById(this.scenes, data.id),
-                        nextScene: findSceneById(this.scenes, hotspot.target)
+                        nextScene: findSceneById(this.scenes, hotspot.target),
+                        _this: this
                     }
                 };
+
+                // Fire off the sceneWillChange event
                 const sceneWillChangeEvent = new CustomEvent(Events.sceneWillChange, eventArgs);
                 this.panoElement.dispatchEvent(sceneWillChangeEvent);
+
             });
 
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
@@ -99,28 +102,17 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
      */
     switchScene(event) {
 
-        const currentScene = event.detail.currentScene;
-        const nextScene = event.detail.nextScene;
-        console.log(event.detail);
+        const { currentScene, nextScene, _this } = event.detail;
 
-        const alteredViewParams = this.getTransitionRotation(currentScene.data.id, nextScene.data.id);
+        const alteredViewParams = _this.getTransitionRotation(currentScene.data.id, nextScene.data.id);
 
         nextScene.view.setParameters(alteredViewParams);
 
-        // overrides the this.currentXYZ variables.
-        // I need those variables intact for altering the intial view params though. So do this after.
-        // I question the need for .call though??? Is it needed.
-        this.cacheSceneVariables.call(this, nextScene);
+        _this.cacheSceneVariables(nextScene);
         nextScene.scene.switchTo();
+
+        // Do we also want to fire a sceneDidChange here? Is there a built in marzipano one?
+        // Also, sceneDidChange vs sceneDidFinishLoading? Could use both.
     }
 
-    // cacheSceneVariables(scene) {
-    //     console.log(scene);
-    //     // Doubt I'll need this. Could prove useful for some layer manipulation though?
-    //     this.currentView = scene.view;
-    //     this.currentScene = scene.scene;
-    //     this.currentContainers = scene.containers;
-    //     this.currentData = scene.data;
-    //     this.currentLayers = scene.layers;
-    // }
 }

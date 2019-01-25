@@ -1,33 +1,25 @@
 // @ts-check
 
 const Marzipano = require('marzipano');
-const { tiledImageSource, isBelievedDesktop } = require('./utils');
+const { tiledImageSource, isBelievedDesktop, defaultSceneTransitionRotationMapping } = require('./utils');
 
 module.exports = class MarzipanoViewer {
 
     /**
-     * 
+     * @class Battenberg.MarzipanoViewer
+     * @memberof Battenberg
      * @param {string} environment 
      * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-     * @param {{ 
-     * scene_data: { 
-     * scenes: [], 
-     * name: string, 
-     * settings: {}, 
-     * cubeGeometryLevels: [], 
-     * fov: {}, 
-     * faceSize: number,
-     * debug: boolean}, 
-     * tile_image_source: string,
-     * icon_image_source: string
-     * } } configData
+     * @param { ConfigData } configData 
      */
     constructor(environment, panoElement, configData) {
 
         this.panoElement = panoElement;
         this.environment = this.prepareEnvironment(environment);
-        this.initialScene = 0;
-        this.rotationMaps = this.sceneTransitionRotationMapping();
+        this.initialScene = configData.initial_scene || 0;
+        this.defaultRotationMapping = defaultSceneTransitionRotationMapping();
+        this.rotationMaps = configData.scene_transition_rotation_mapping || this.defaultRotationMapping;
+
 
 
         this.Marzipano = Marzipano;
@@ -60,22 +52,10 @@ module.exports = class MarzipanoViewer {
     }
 
 
-    setupSceneBehaviour(sceneCreator) {
-
-        // Create scenes using the provided data json
-        this.scenes = this.createScenesFromData.call(this, this.sceneData.scenes, sceneCreator, this.viewer);
-
-
-
-        return this.scenes;
-    }
-
-
 
     /**
-     * 
-     * @param {[]} _data 
-     * @param {() => {}} createScene 
+     * @param {any[]} _data
+     * @param {Function} createScene
      */
     createScenesFromData(_data, createScene, viewer) {
 
@@ -88,10 +68,10 @@ module.exports = class MarzipanoViewer {
             // [2] Create the geometry
             let geometry = new this.Marzipano.CubeGeometry(this.sceneData.cubeGeometryLevels);
 
-            // TODO: Maybe move the groupedSceneData return object into it.
-            // Then desktop can return Scene and VR can return Stage. Does it even matter though?
             const { scene, view, containers, layers, data } = createScene.call(this, viewer, source, geometry, mData);
 
+            // Yes this is verbose, when we could store the createScene results directly into this variable. 
+            // But these values are prone to change and routinely debugged against.
             const groupedSceneData = {
                 data: data,
                 scene: scene,
@@ -257,15 +237,12 @@ module.exports = class MarzipanoViewer {
 
         if (window.matchMedia) {
             let setMode = function () {
-                // The viewport is, at most 
                 if (mql.matches) {
                     document.body.classList.remove('desktop');
                     document.body.classList.add('mobile');
-                    // document.body.innerHTML = 'mobile';
                 } else {
                     document.body.classList.remove('mobile');
                     document.body.classList.add('desktop');
-                    // document.body.innerHTML = 'desktop';
                 }
             };
             let mql = matchMedia('(max-width: 500px), (max-height: 500px)');
@@ -280,90 +257,20 @@ module.exports = class MarzipanoViewer {
 
 
     /**
-     * Should probably make from and to just a string, not the whole scene data object
      * @param { string } from 
      * @param {string } to 
-     * @returns {{ 'scene_name': { pitch: number, yaw: number }}}
+     * @returns {{ 'scene_name': { pitch: number, yaw: number }}} pitch and yaw 
      */
     getTransitionRotation(from, to) {
+        console.log({ mapping: this.rotationMaps, from, to })
+        if (this.useDefaultRotationMapping()) {
+            return this.rotationMaps;
+        }
 
         return this.rotationMaps.from[from].to[to];
     }
 
-    // Could maybe be made into a file imported in the browser. Oh well.
-    sceneTransitionRotationMapping() {
-        return {
-            'from': {
-                'scene-0': {
-                    'to': {
-                        // Required for first load. From 0 to 0 is silly but go with it.
-                        'scene-0': {
-                            'yaw': 3.8,
-                            'pitch': 0.22798880022457624,
-                        },
-                        'scene-1': {
-                            'yaw': -2.8274448996260446,
-                            'pitch': 0.06012930486655321
-                        }
-                    }
-                },
-                'scene-1': {
-                    'to': {
-                        'scene-0': {
-                            'yaw': 0.145253345801045,
-                            'pitch': 0.07
-                        },
-                        'scene-2': {
-                            'yaw': -0.14971585481837835,
-                            'pitch': 0.07
-                        },
-                        'scene-3': {
-                            'yaw': 2.6021574657373403,
-                            'pitch': 0.09960663233749756
-                        }
-                    }
-                },
-                'scene-2': {
-                    'to': {
-                        'scene-1': {
-                            'yaw': 2.432133517575684,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-3': {
-                    'to': {
-                        'scene-1': {
-                            'yaw': -0.4469404282362994,
-                            'pitch': 0.07244311540308956
-                        },
-                        'scene-4': {
-                            'yaw': -1.3994865291876781,
-                            'pitch': 0.05190705801597417
-                        },
-                        'scene-5': {
-                            'yaw': 1.403211200196525,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-4': {
-                    'to': {
-                        'scene-3': {
-                            'yaw': 1.0620391999023013,
-                            'pitch': 0.07
-                        }
-                    }
-                },
-                'scene-5': {
-                    'to': {
-                        'scene-3': {
-                            'yaw': -0.5201367601720577,
-                            'pitch': 0.11417302060570478
-                        }
-                    }
-                }
-            }
-        }
+    useDefaultRotationMapping() {
+        return this.rotationMaps === this.defaultRotationMapping;
     }
 }

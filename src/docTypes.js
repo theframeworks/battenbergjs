@@ -10,10 +10,10 @@
  * @memberof Battenberg
  * @typedef { Object } ConfigData
  * @property { SceneData } scene_data
- * @property { SceneTransitionRotationMapping } scene_transition_rotation_mapping
  * @property { String } tile_image_source:
  * @property { String } link_icon_path
- * @property { Number } initial_scene
+ * @property { SceneTransitionRotationMapping } [scene_transition_rotation_mapping]
+ * @property { Number } [initial_scene]
  * @property { Boolean } [debug]
  */
 

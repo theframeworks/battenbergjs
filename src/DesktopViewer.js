@@ -41,6 +41,14 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
     }
 
 
+    // TODO: The data jsdoc should probably live in it's own definition....
+    // TODO: All this JSDoc dance could be fixed with typscript :(
+    /**
+     * @ts-ignore
+     * @param { Marzipano.ImageUrlSource } source
+     * @param { Marzipano.CubeGeometry } geometry
+     * @param {{ id: any; initialViewParameters: { yaw?: number; pitch?: number; roll?: number; fov?: number; }; linkHotspots: [{ target: string, yaw?: any; pitch?: any; }] ; infoHotspots: [ { id: string; hideInMobile: any; yaw?: any; pitch?: any; } ] }} data ;
+     */
     createScene(viewer, source, geometry, data) {
 
         // Create the "eyes" or view.
@@ -61,7 +69,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         const hotspotContainer = scene.hotspotContainer();
 
         // Create link hotspots.
-        data.linkHotspots.forEach((hotspot) => {
+        data.linkHotspots.forEach(hotspot => {
             let element = super.createLinkHotspotElement();
 
             // Add click event handler.
@@ -88,7 +96,7 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         });
 
         // Create info hotspots.
-        data.infoHotspots.forEach((hotspot) => {
+        data.infoHotspots.forEach(hotspot => {
             let element = super.createInfoHotspotElement(hotspot);
             hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
         });

@@ -1,6 +1,6 @@
 # TODO
 
-- Correctly use the supplied icons directory to load icons.
+- ~~Correctly use the supplied icons directory to load icons.~~
 - Work on accepting more options in constructors.
 - Some longer function signatures could use an object of options.
 - Some functions accept arguments they neither use or need.

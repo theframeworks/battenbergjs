@@ -14,17 +14,12 @@ module.exports = class MarzipanoViewer {
      */
     constructor(environment, panoElement, configData) {
 
+        // Unwrap our config object
         this.panoElement = panoElement;
-        this.environment = this.prepareEnvironment(environment);
+        this.sceneData = configData.scene_data;
         this.initialScene = configData.initial_scene || 0;
         this.defaultRotationMapping = defaultSceneTransitionRotationMapping();
         this.rotationMaps = configData.scene_transition_rotation_mapping || this.defaultRotationMapping;
-
-
-
-        this.Marzipano = Marzipano;
-
-        this.sceneData = configData.scene_data;
         this.imageDir = configData.tile_image_source;
         this.linkIconPath = configData.link_icon_path;
         // Is this safe with coercion etc.? 
@@ -32,6 +27,9 @@ module.exports = class MarzipanoViewer {
         // else it's undefined, null or false then assign false
         this.debugging = configData.debug ? true : false;
 
+
+        this.Marzipano = Marzipano;
+        this.environment = this.prepareEnvironment(environment);
         this.believedDesktop = isBelievedDesktop();
 
         // Viewer options. Choices here: http://www.marzipano.net/reference/global.html#registerDefaultControls
@@ -48,7 +46,6 @@ module.exports = class MarzipanoViewer {
 
 
         this.currentScene = null;
-        this.defaultView = null;
         this.currentData = {};
         this.currentContainers = [];
         this.currentLayers = [];
@@ -135,6 +132,10 @@ module.exports = class MarzipanoViewer {
     }
 
 
+    /**
+     * @param {{ id: string; hideInMobile: any; }} data
+     * @returns { HTMLDivElement } Hotspot container element
+     */
     createInfoHotspotElement(data) {
 
         let container = document.createElement('div');

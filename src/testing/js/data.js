@@ -40,7 +40,14 @@ module.exports = {
                 'yaw': 0,
                 'fov': 1.5707963267948966
             },
-            'linkHotspots': [],
+            'linkHotspots': [
+                {
+                    'yaw': -2.4706537197430958,
+                    'pitch': 0.06112186334075176,
+                    'rotation': 0,
+                    'target': '2-downstairs-baydoors'
+                }
+            ],
             'infoHotspots': []
         },
         {
@@ -51,7 +58,14 @@ module.exports = {
                 'yaw': 0,
                 'fov': 1.5707963267948966
             },
-            'linkHotspots': [],
+            'linkHotspots': [
+                {
+                    'yaw': 0.5144675634586342,
+                    'pitch': 0.43246628242755136,
+                    'rotation': 0,
+                    'target': '3-downstairs-understairs'
+                }
+            ],
             'infoHotspots': []
         },
         {
@@ -62,7 +76,14 @@ module.exports = {
                 'yaw': 0,
                 'fov': 1.5707963267948966
             },
-            'linkHotspots': [],
+            'linkHotspots': [
+                {
+                    'yaw': -2.4706537197430958,
+                    'pitch': 0.06112186334075176,
+                    'rotation': 0,
+                    'target': '2-downstairs-baydoors'
+                }
+            ],
             'infoHotspots': []
         },
         {

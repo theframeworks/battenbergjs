@@ -26,7 +26,7 @@ module.exports = class MarzipanoViewer {
 
         this.sceneData = configData.scene_data;
         this.imageDir = configData.tile_image_source;
-        this.iconDir = configData.icon_image_source;
+        this.linkIconPath = configData.link_icon_path;
         this.debugging = configData.debug || false;
 
         this.believedDesktop = isBelievedDesktop();
@@ -109,7 +109,7 @@ module.exports = class MarzipanoViewer {
 
         // Create image element.
         let icon = document.createElement('img');
-        icon.src = this.iconDir;
+        icon.src = this.linkIconPath;
         icon.classList.add('link-hotspot-icon');
 
 

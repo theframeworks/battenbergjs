@@ -11,7 +11,7 @@
  * @typedef { Object } ConfigData
  * @property { scene_data } scene_data
  * @property { String } tile_image_source:
- * @property { String } icon_image_source
+ * @property { String } link_icon_path
  * @property { Number } initial_scene
  * @property { Boolean } debug
  */

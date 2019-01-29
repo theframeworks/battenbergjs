@@ -12,10 +12,11 @@ let viewer;
 
 // return true on creation, false if instance already in use
 function handleInline() {
+
     viewer = new bbjs.DesktopViewer(pano, {
         scene_data: data,
         tile_image_source: '../images/tiles',
-        icon_image_source: '../images/icons',
+        link_icon_path: '../images/icons/link.svg',
         hotspot_ids: [],
         debug: true
     });

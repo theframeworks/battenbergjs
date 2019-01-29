@@ -5,20 +5,12 @@ const { deg2rad, clampOverflowRotation, findSceneById } = require('./utils');
 module.exports = class VRViewer extends MarzipanoViewer {
 
     /**
-   * 
-   * @param {Element} panoElement - Injected by the viewSwitch file with either the VR or Desktop panoElement
-    * @param {{ 
-     * scene_data: { 
-     * scenes: [], 
-     * name: string, 
-     * settings: {}, 
-     * cubeGeometryLevels: [], 
-     * fov: {}, 
-     * faceSize: number,
-     * debug?: boolean }, 
-     * image_source: string
-     * } } configData
-   */
+    * 
+    * @class Battenberg.DesktopViewer
+    * @memberOf Battenberg  
+    * @param { Element } panoElement - Injected by the consumer with either the VR or Desktop panoElement
+    * @param { ConfigData } configData
+    */
     constructor(panoElement, configData) {
 
         super('mobileVR', panoElement, configData);

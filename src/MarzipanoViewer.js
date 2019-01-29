@@ -27,7 +27,10 @@ module.exports = class MarzipanoViewer {
         this.sceneData = configData.scene_data;
         this.imageDir = configData.tile_image_source;
         this.linkIconPath = configData.link_icon_path;
-        this.debugging = configData.debug || false;
+        // Is this safe with coercion etc.? 
+        // If it's assigned and true then assign true,
+        // else it's undefined, null or false then assign false
+        this.debugging = configData.debug ? true : false;
 
         this.believedDesktop = isBelievedDesktop();
 
@@ -59,7 +62,7 @@ module.exports = class MarzipanoViewer {
      */
     createScenesFromData(_data, createScene, viewer) {
 
-        return _data.map((mData, i) => {
+        return _data.map(mData => {
 
 
             // [1] get the images
@@ -262,7 +265,7 @@ module.exports = class MarzipanoViewer {
      * @returns {{ 'scene_name': { pitch: number, yaw: number }}} pitch and yaw 
      */
     getTransitionRotation(from, to) {
-        console.log({ mapping: this.rotationMaps, from, to })
+        console.log({ mapping: this.rotationMaps, from, to });
         if (this.useDefaultRotationMapping()) {
             return this.rotationMaps;
         }
@@ -273,4 +276,4 @@ module.exports = class MarzipanoViewer {
     useDefaultRotationMapping() {
         return this.rotationMaps === this.defaultRotationMapping;
     }
-}
+};

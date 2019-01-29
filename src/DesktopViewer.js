@@ -115,4 +115,4 @@ module.exports = class DesktopViewer extends MarzipanoViewer {
         // Also, sceneDidChange vs sceneDidFinishLoading? Could use both.
     }
 
-}
+};

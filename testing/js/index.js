@@ -4,7 +4,7 @@ const bbjs = require('../../src/index');
 const data = require('./data.js');
 
 
-var pano = document.getElementById('pano');
+var pano = document.getElementById('battenberg');
 var panoOriginal = pano.cloneNode();
 var landscapeMedia = window.matchMedia('(orientation: landscape)');
 

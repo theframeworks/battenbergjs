@@ -42,6 +42,7 @@ var browserifyOpts = {
     debug: true
 };
 
+
 var b = watchify(browserify(browserifyFiles, browserifyOpts));
 
 
@@ -82,7 +83,7 @@ gulp.task('clean', function () {
 
 
 gulp.task('css', function () {
-    return gulp.src('./dist/css/*')
+    return gulp.src('./src/style.css')
         .pipe(cssnano({
             autoprefixer: false,
             discardComments: {
@@ -91,8 +92,7 @@ gulp.task('css', function () {
             mergeLonghand: false,
             zindex: false,
         }))
-        .pipe(csswrap({ selector: '#battenberg' }))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./testing/css'));
 });
 
 gulp.task('html', function () {
@@ -122,7 +122,7 @@ gulp.task('images:svg', function () {
 
 
 gulp.task('vr:css', function () {
-    return gulp.src('./src/ibm-garage.scss')
+    return gulp.src('./src/style.scss')
         .pipe(sass())
         .pipe(cssnano({
             discardComments: {
@@ -131,8 +131,9 @@ gulp.task('vr:css', function () {
             mergeLonghand: false,
             zindex: false,
         }))
-        .pipe(rename('ibm-garage-360.css'))
-        .pipe(gulp.dest('./dist/css'));
+        // .pipe(csswrap({ selector: '#battenberg' }))
+        .pipe(rename('bbjs.css'))
+        .pipe(gulp.dest('./testing/css'));
 });
 
 gulp.task('vr:icons', function () {

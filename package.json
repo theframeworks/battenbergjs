@@ -4,9 +4,8 @@
     "description": "## Requirements",
     "main": "dist/index.js",
     "scripts": {
-        "demo:build": "rimraf testing/js/bundle.js && browserify testing/js/index.js --debug -o testing/js/bundle.js",
-        "demo:serve": "http-server ./testing",
-        "serve": "http-server ./src/testing",
+        "build": "browserify testing/js/index.js --debug -o testing/js/bundle.js && gulp vr:css",
+        "serve": "http-server ./testing",
         "prod": "npm run production --  ",
         "production": "node_modules/gulp/bin/gulp.js",
         "slice": "slice --file-dir --output-dir"

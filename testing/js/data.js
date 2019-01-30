@@ -29,7 +29,12 @@ module.exports = {
                 }
             ],
             'infoHotspots': [
-
+                {
+                    'id': '17',
+                    'yaw': 2.001357379369736,
+                    'pitch': 0.14586136220478352,
+                    'title': 'Where impact happens',
+                }
             ]
         },
         {
